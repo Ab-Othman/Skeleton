@@ -4,7 +4,7 @@ namespace ClassLibrary
 {
     public class clsOrder
     {
-        public int OrderNo { get; set; }
+        public String OrderNo { get; set; }
         public String CustomerUserId { get; set; }
         public DateTime OrderDate { get; set; }
         public String ShippingAddress { get; set; }
