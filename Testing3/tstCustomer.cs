@@ -22,7 +22,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
             //create some test data
-            String TestData = "Username123";
+            int TestData = 123456789;
             //assign the data to the property 
             ACustomer.CustomerUserId = TestData;
             //test to see if the two values are the same
@@ -48,7 +48,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
 
-            int TestData = 12345;
+            String TestData = "12345";
 
             ACustomer.CustomerPhoneNumber = TestData;
 
@@ -82,31 +82,18 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void CityPropertyOk()
+        public void CustomerAddressOk()
         {
             //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
 
             String TestData = "Some City";
 
-            ACustomer.City = TestData;
+            ACustomer.CustomerAddress = TestData;
 
-            Assert.AreEqual(ACustomer.City, TestData);
+            Assert.AreEqual(ACustomer.CustomerAddress, TestData);
         }
-
-        [TestMethod]
-        public void PostCodePropertyOk()
-        {
-            //create an instance of the class we want to create
-            clsCustomer ACustomer = new clsCustomer();
-
-            String TestData = "LE2 4AB";
-
-            ACustomer.PostCode = TestData;
-
-            Assert.AreEqual(ACustomer.PostCode, TestData);
-        }
-
+       
         [TestMethod]
         public void SubscribedToReceiveMailPropertyOk()
         {
