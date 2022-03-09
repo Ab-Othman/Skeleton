@@ -103,16 +103,35 @@ namespace ClassLibrary
 
         public bool Find(int stringID)
         {
-            //set private data memebers to the test data value
-            mSupplierID = 3;
-            mDateAdded = Convert.ToDateTime("15/08/2000");
-            mPhoneNumber = "07559983467";
-            mEmail = "huawei@huawei.com";
-            mShippingFromAddress = "China";
-            mSupplierName = "Huawei";
-            mActive = true;
-            //always return true
-            return true;
+LibbysBranch22
+            //create an instance of the data connection 
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the address no to search for
+            DB.AddParameter("@SupplierID", SupplierID);
+            //execute the stored procedure
+            DB.Execute("sproc_tblSupplier_FilterBySupplierID");
+            //if one record is found (there should be 1 or 0)
+            if (DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+                mSupplierID = Convert.ToInt32(DB.DataTable.Rows[0]["SupplierID"]);
+                mPhoneNumber = Convert.ToString(DB.DataTable.Rows[0]["PhoneNumber"]);
+                mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
+                mShippingFromAddress = Convert.ToString(DB.DataTable.Rows[0]["ShippingFromAddress"]);
+                mSupplierName = Convert.ToString(DB.DataTable.Rows[0]["SupplierName"]);
+                mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
+                //return that everything worked ok
+                return true; 
+            }
+            //if no record was found
+            else
+            {
+                //return false indicating problem
+                return false;
+            }
+
+
         }
     }
 }
