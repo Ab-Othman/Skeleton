@@ -1,4 +1,4 @@
-﻿using ClassLibrary;
+using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
@@ -119,8 +119,7 @@ namespace Testing2
             Int32 SupplierID = 3;
             //invoke the method
             Found = ASupplier.Find(SupplierID);
-            //test to see if the result is true
-            Assert.IsTrue(Found);
+
         }
 
         [TestMethod]

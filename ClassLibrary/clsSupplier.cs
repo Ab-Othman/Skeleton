@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace ClassLibrary
 {
@@ -103,6 +103,7 @@ namespace ClassLibrary
 
         public bool Find(int stringID)
         {
+LibbysBranch22
             //create an instance of the data connection 
             clsDataConnection DB = new clsDataConnection();
             //add the parameter for the address no to search for
@@ -129,6 +130,8 @@ namespace ClassLibrary
                 //return false indicating problem
                 return false;
             }
+
+
         }
     }
 }
