@@ -107,5 +107,40 @@ namespace Testing3
             Assert.AreEqual(ACustomer.SubscribedToReceiveMail, TestData);
         }
 
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+
+            Boolean Found = false;
+
+            Int32 CustomerUserId = 12312;
+
+            Found = ACustomer.Find(CustomerUserId);
+
+            Assert.IsTrue(Found);
+        }
+
+        public void TestCustomerUserIdNoFound()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 CustomerUserId = 12312;
+
+            Found = ACustomer.Find(CustomerUserId);
+
+            if(ACustomer.CustomerUserId != 12312)
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+
+        }
     }
 }
