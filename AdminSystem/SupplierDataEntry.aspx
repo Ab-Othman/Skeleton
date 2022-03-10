@@ -7,15 +7,16 @@
     <title></title>
     <style type="text/css">
         #form1 {
-            height: 353px;
+            height: 371px;
         }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Label ID="lblSupplierID" runat="server" Text="Supplier ID" width="92px"></asp:Label>
-            <asp:TextBox ID="txtSupplierID" runat="server" style="margin-left: 7px"></asp:TextBox>
+            <asp:Label ID="lblSupplierID" runat="server" Text="Supplier ID" width="109px"></asp:Label>
+            <asp:TextBox ID="txtSupplierID" runat="server" style="margin-left: 7px" Width="185px"></asp:TextBox>
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="margin-left: 17px" Text="Find" />
         </div>
         <asp:Label ID="lblPhoneNumber" runat="server" Text="Phone Number"></asp:Label>
         <asp:TextBox ID="txtPhoneNumber" runat="server" style="margin-left: 9px"></asp:TextBox>
