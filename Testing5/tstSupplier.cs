@@ -116,9 +116,9 @@ namespace Testing2
             //boolean variable to store the results of validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 StringID = 21;
+            Int32 SupplierID = 3;
             //invoke the method
-            Found = ASupplier.Find(StringID);
+            Found = ASupplier.Find(SupplierID);
             //test to see if the result is true
             Assert.IsTrue(Found);
         }
@@ -133,11 +133,11 @@ namespace Testing2
             //boolean variable to record if data is ok
             Boolean OK = true;
             //create test data
-            Int32 SupplierID = 3;
+            Int32 SupplierID = 1;
             //invoke the method
             Found = ASupplier.Find(SupplierID);
             //check the supplier ID
-            if (ASupplier.SupplierID != 3)
+            if (ASupplier.SupplierID != 1)
             {
                 OK = false;
             }
