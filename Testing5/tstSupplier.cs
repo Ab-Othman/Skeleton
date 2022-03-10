@@ -26,7 +26,7 @@ namespace Testing2
             //assign data to property
             ASupplier.Active = TestData;
             //test to see two values are the same
-            Assert.AreEqual(ASupplier.Active, TestData);
+            Assert.AreEqual(ASupplier.Active, true);
         }
 
         [TestMethod]
@@ -116,9 +116,9 @@ namespace Testing2
             //boolean variable to store the results of validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 StringID = 21;
+            Int32 SupplierID = 3;
             //invoke the method
-            Found = ASupplier.Find(StringID);
+            Found = ASupplier.Find(SupplierID);
             //test to see if the result is true
             Assert.IsTrue(Found);
         }
@@ -225,7 +225,7 @@ namespace Testing2
             //invoke the method
             Found = ASupplier.Find(SupplierID);
             //check the property
-            if (ASupplier.Email != "huawei@huawei.com")
+            if (ASupplier.Email != "huawei@huawei.co.uk")
             {
                 OK = false;
             }
@@ -269,7 +269,7 @@ namespace Testing2
             //invoke the method
             Found = ASupplier.Find(SupplierID);
             //check the property
-            if (ASupplier.SupplierName != "Huawei")
+            if (ASupplier.SupplierName != "huawei")
             {
                 OK = false;
             }
