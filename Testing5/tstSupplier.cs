@@ -6,7 +6,18 @@ namespace Testing2
 {
     [TestClass]
     public class tstSupplier
+
     {
+        //good test data
+        //create test data to pass method
+        string PhoneNumber = "07559983467";
+        string Email = "huawei@huawei.co.uk";
+        string DateAdded = DateTime.Now.Date.ToString();
+        string ShippingFromAddress = "China";
+        string SupplierName = "huawei";
+
+
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -276,5 +287,631 @@ namespace Testing2
             //test to see if result is correct
             Assert.IsTrue(OK);
         }
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create an instance of the class we want to create 
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNumberMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store an error message
+            String Error = "";
+            //create some test data to pass the method
+            string PhoneNumber = ""; //should trigger an error
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNumberMin()
+        {
+            //create an instance of the class we want to create 
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass the method
+            string PhoneNumber = "0";
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see that the result is correct 
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNumberMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsSupplier ASupplier = new clsSupplier();
+            //String variable to store any error message
+            String Error = "";
+            //create some test data to pass the method
+            string PhoneNumber = "07";
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNumberMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsSupplier ASupplier = new clsSupplier();
+            //String variable to store any error message
+            String Error = "";
+            //create some test data to pass the method
+            string PhoneNumber = "07897";
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNumberMax()
+        {
+            //create an instance of the class we want to create
+            clsSupplier ASupplier = new clsSupplier();
+            //String variable to store any error message
+            String Error = "";
+            //create some test data to pass the method
+            string PhoneNumber = "000000";
+            //invoke the methd
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNumberMid()
+        {
+            //create an instance of the class we want to create
+            clsSupplier ASupplier = new clsSupplier();
+            //String variable to store any error message
+            String Error = "";
+            //create some test data to pass the method
+            string PhoneNumber = "00000000";
+            //invoke the methd
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNumberMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsSupplier ASupplier = new clsSupplier();
+            //String variable to store any error message
+            String Error = "";
+            //create some test data to pass the method
+            string PhoneNumber = "0000000000000000";
+            //invoke the methd
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void PhoneNumberExtremeMax()
+        {
+            //Create anm instance of the class we want to create 
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass method
+            string PhoneNumber = "";
+            PhoneNumber = PhoneNumber.PadRight(500, '0');
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedExtremeMin()
+        {
+            //create an instance of the class we want to create
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //create a avariable to store the test date data
+            DateTime TestDate;
+            //set the date to today's date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 100 years
+            TestDate = TestDate.AddYears(-100);
+            //convert the date variable to a string variable 
+            string DateAdded = TestDate.ToString();
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 1 day
+            TestDate = TestDate.AddDays(-1);
+            //convert the date variable to a string variable
+            string DateAdded = TestDate.ToString();
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void DateAddedMin()
+        {
+            //create an instance of the class we want to create
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //convert the date variable to a string variable
+            string DateAdded = TestDate.ToString();
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 1 day
+            TestDate = TestDate.AddDays(1);
+            //convert the date variable to a string variable
+            string DateAdded = TestDate.ToString();
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 100 years
+            TestDate = TestDate.AddYears(100);
+            //convert the date variable to a string variable
+            string DateAdded = TestDate.ToString();
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedInvalidData()
+        {
+            //create an instance of the class we want to create
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //set the DateAdded to a non date value
+            string DateAdded = "this is not a date!";
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see that the result is correct 
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string Email = "";
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailMin()
+        {
+            //create an instance of the class we want to create
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string Email = "a";
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string Email = "aa";
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string Email = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailMax()
+        {
+            //create an instance of the class we want to create
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string Email = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailMaxPlusOne()
+        {
+            //Create anm instance of the class we want to create 
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass method
+            string Email = "";
+            Email = Email.PadRight(50, 'a');
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailMid()
+        {
+            //Create anm instance of the class we want to create 
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass method
+            string Email = "";
+            Email = Email.PadRight(25, 'a');
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailExtremeMax()
+        {
+            //Create anm instance of the class we want to create 
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass method
+            string Email = "";
+            Email = Email.PadRight(500, 'a');
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ShippingFromAddressMinLessOne()
+        {
+            //create an instance of the class we want to create 
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string ShippingFromAddress = "";
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see if result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ShippingFromAddressMin()
+        {
+            //create an instance of the class we want to create 
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string ShippingFromAddress = "a";
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see if result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ShippingFromAddressMinPlusOne()
+        {
+            //create an instance of the class we want to create 
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string ShippingFromAddress = "aa";
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see if result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ShippingFromAddressMaxLessOne()
+        {
+            //Create anm instance of the class we want to create 
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass method
+            string ShippingFromAddress = "";
+            ShippingFromAddress = ShippingFromAddress.PadRight(49, 'a');
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ShippingFromAddressMax()
+        {
+            //Create anm instance of the class we want to create 
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass method
+            string ShippingFromAddress = "";
+            ShippingFromAddress = ShippingFromAddress.PadRight(50, 'a');
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ShippingFromAddressMaxPlusOne()
+        {
+            //Create anm instance of the class we want to create 
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass method
+            string ShippingFromAddress = "";
+            ShippingFromAddress = ShippingFromAddress.PadRight(50, 'a');
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ShippingFromAddressMid()
+        {
+            //Create anm instance of the class we want to create 
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass method
+            string ShippingFromAddress = "";
+            ShippingFromAddress = ShippingFromAddress.PadRight(25, 'a');
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ShippingFromAddressExtremeMax()
+        {
+            //Create anm instance of the class we want to create 
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass method
+            string ShippingFromAddress = "";
+            ShippingFromAddress = ShippingFromAddress.PadRight(500, 'a');
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+  
+        [TestMethod]
+        public void SupplierNameMinLessOne()
+        {
+            //create an instance of the class we want to create 
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string SupplierName = "";
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see if result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierNameMin()
+        {
+            //create an instance of the class we want to create 
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string SupplierName = "a";
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see if result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierNameMinPlusOne()
+        {
+            //create an instance of the class we want to create 
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string SupplierName = "aa";
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see if result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierNameMaxLessOne()
+        {
+            //Create anm instance of the class we want to create 
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass method
+            string SupplierName = "";
+            SupplierName = SupplierName.PadRight(49, 'a');
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierNameMax()
+        {
+            //Create anm instance of the class we want to create 
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass method
+            string SupplierName = "";
+            SupplierName = SupplierName.PadRight(50, 'a');
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierNameMaxPlusOne()
+        {
+            //Create anm instance of the class we want to create 
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass method
+            string SupplierName = "";
+            SupplierName = SupplierName.PadRight(51, 'a');
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierNameMid()
+        {
+            //Create anm instance of the class we want to create 
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass method
+            string SupplierName = "";
+            SupplierName = SupplierName.PadRight(25, 'a');
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierNameExtremeMax()
+        {
+            //Create anm instance of the class we want to create 
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass method
+            string SupplierName = "";
+            SupplierName = SupplierName.PadRight(500, 'a');
+            //invoke the method
+            Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+            //test to see result is correct
+            Assert.AreNotEqual(Error, "");
+        }
     }
+    
 }

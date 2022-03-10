@@ -121,7 +121,7 @@ namespace ClassLibrary
                 mSupplierName = Convert.ToString(DB.DataTable.Rows[0]["SupplierName"]);
                 mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
                 //return that everything worked ok
-                return true; 
+                return true;
             }
             //if no record was found
             else
@@ -131,6 +131,86 @@ namespace ClassLibrary
             }
 
 
+
+        }
+
+        public string Valid(string phoneNumber, string email, string dateAdded, string shippingFromAddress, string supplierName)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //create a temp variable to store data values
+            DateTime DateTemp;
+            //if PhoneNumber is blank
+            if (phoneNumber.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Phone Number may not be blank : ";
+            }
+            //if the Phone Number is greater than 15 characters
+            if (phoneNumber.Length > 15)
+            {
+                //record the error 
+                Error = Error + "The Phone number must be less than 15 charcacters : ";
+            }
+            //is the email blank
+            if (email.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Email may not be blank : ";
+            }
+            //if the email is too long
+            if (email.Length == 50)
+            {
+                //record the error
+                Error = Error + "The Email must be less than 50 Characters : ";
+            }
+            //is the ShippingFromAddress blank
+            if (shippingFromAddress.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Shipping From Address may not be blank : ";
+            }
+            //if the shipping from address is too long
+            if (shippingFromAddress.Length == 50)
+            {
+                //record the error
+                Error = Error + "The shipping From Address must be less than 50 Characters : ";
+            }
+            //is Supplier Name blank
+            if(supplierName.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Supplier Name must not be blank : ";
+            }
+            //if the Supplier name is too long
+            if (supplierName.Length == 51)
+            {
+                //record the error
+                Error = Error + "The Supplier Name must be less than 50 characters : ";
+            }
+            try
+            {
+                //copy the dateAdded value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(dateAdded);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //check to see if the date is greater than todays date 
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+            //return any error messages
+            return Error;
         }
     }
 }
