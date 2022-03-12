@@ -19,7 +19,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsOrder AnOrder = new clsOrder();
         //capture order details
         AnOrder.OrderNo = int.Parse(txtOrderNo.Text);
-        AnOrder.CustomerUserId = txtCustomerUserId.Text;
+        AnOrder.CustomerUserId = int.Parse(txtCustomerUserId.Text);
         AnOrder.OrderDate = DateTime.Parse(txtOrderDate.Text);
         AnOrder.ShippingAddress = txtShippingAddress.Text;
         AnOrder.PaymentMethod = txtPaymentMethod.Text;

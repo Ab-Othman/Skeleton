@@ -35,7 +35,7 @@ namespace Testing4
             //create insatnce of class want to create
             clsOrder anOrder = new clsOrder();
 
-            string TestData = "Username123";
+            int TestData = 123;
 
             anOrder.CustomerUserId = TestData;
 
@@ -105,6 +105,174 @@ namespace Testing4
             anOrder.OrderStatus = TestData;
 
             Assert.AreEqual(anOrder.OrderStatus, TestData);
+        }
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create instance of clsOrder
+            clsOrder anOrder = new clsOrder();
+            //Boolean variable to store results of validation
+            Boolean Found = false;
+            //create some test data to use with the method
+            Int32 OrderNo = 21;
+            Found = anOrder.Find(OrderNo);
+            //test to see if the result is true
+            Assert.IsTrue(Found);
+        }
+ 
+        [TestMethod]
+        public void TestOrderNoFound()
+        {
+            //create an instance
+            clsOrder anOrder = new clsOrder();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is ok
+            Boolean OK = true;
+            //create test data
+            Int32 OrderNo = 21;
+            //invoke the method
+            Found = anOrder.Find(OrderNo);
+            //check the order no
+            if (anOrder.OrderNo != 21)
+            {
+                OK = false;
+            }
+            //test to see if result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestCustomerUserIdFound()
+        {
+            //create an instance
+            clsOrder anOrder = new clsOrder();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is ok
+            Boolean OK = true;
+            //create test data
+            Int32 OrderNo = 21;
+            //invoke the method
+            Found = anOrder.Find(OrderNo);
+            //check the order no
+            if (anOrder.CustomerUserId != 1)
+            {
+                OK = false;
+            }
+            //test to see if result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestOrderDateFound()
+        {
+            //create an instance
+            clsOrder anOrder = new clsOrder();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is ok
+            Boolean OK = true;
+            //create test data
+            Int32 OrderNo = 21;
+            //invoke the method
+            Found = anOrder.Find(OrderNo);
+            //check the order no
+            if (anOrder.OrderDate != Convert.ToDateTime("15/08/2000"))
+            {
+                OK = false;
+            }
+            //test to see if result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestShippingAddressFound()
+        {
+            //create an instance
+            clsOrder anOrder = new clsOrder();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is ok
+            Boolean OK = true;
+            //create test data
+            Int32 OrderNo = 21;
+            //invoke the method
+            Found = anOrder.Find(OrderNo);
+            //check the order no
+            if (anOrder.ShippingAddress != "123 House")
+            {
+                OK = false;
+            }
+            //test to see if result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestPaymenntMethodFound()
+        {
+            //create an instance
+            clsOrder anOrder = new clsOrder();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is ok
+            Boolean OK = true;
+            //create test data
+            Int32 OrderNo = 21;
+            //invoke the method
+            Found = anOrder.Find(OrderNo);
+            //check the order no
+            if (anOrder.PaymentMethod != "Card")
+            {
+                OK = false;
+            }
+            //test to see if result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestPaymentReceivedFound()
+        {
+            //create an instance
+            clsOrder anOrder = new clsOrder();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is ok
+            Boolean OK = true;
+            //create test data
+            Int32 OrderNo = 21;
+            //invoke the method
+            Found = anOrder.Find(OrderNo);
+            //check the order no
+            if (anOrder.PaymentReceived != true)
+            {
+                OK = false;
+            }
+            //test to see if result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestOrderStatusFound()
+        {
+            //create an instance
+            clsOrder anOrder = new clsOrder();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is ok
+            Boolean OK = true;
+            //create test data
+            Int32 OrderNo = 21;
+            //invoke the method
+            Found = anOrder.Find(OrderNo);
+            //check the order no
+            if (anOrder.OrderStatus != "Processed")
+            {
+                OK = false;
+            }
+            //test to see if result is correct
+            Assert.IsTrue(OK);
         }
     }
 }
