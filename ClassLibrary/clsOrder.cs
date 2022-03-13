@@ -92,6 +92,9 @@ namespace ClassLibrary
 
         public bool Find(int OrderNo)
         {
+            /* 
+             * Old Code
+             * 
             //set the private data members to the test data value
             mOrderNo = 21;
             mCustomerUserId = 1;
@@ -102,6 +105,33 @@ namespace ClassLibrary
             mOrderStatus = "Processed";
             //always return true
             return true;
+            */
+
+            //create instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the order no to search for
+            DB.AddParameter("@OrderNo", OrderNo);
+            //execute stored procedure
+            DB.Execute("sproc_tblOrder_FilterByOrderNo");
+            //if one record is founnd (there should be either one or zero!)
+            if (DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+                mOrderNo = Convert.ToInt32(DB.DataTable.Rows[0]["OrderNo"]);
+                mCustomerUserId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerUserId"]);
+                mOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["OrderDate"]);
+                mShippingAddress = Convert.ToString(DB.DataTable.Rows[0]["ShippingAddress"]);
+                mPaymentMethod = Convert.ToString(DB.DataTable.Rows[0]["PaymentMethod"]);
+                mPaymentReceived = Convert.ToBoolean(DB.DataTable.Rows[0]["PaymentReceived"]);
+                mOrderStatus = Convert.ToString(DB.DataTable.Rows[0]["OrderStatus"]);
+                return true;
+            }
+            //if no record was found
+            else
+            {
+                //return false indicating a problem
+                return false;
+            }
         }
     }
 }
