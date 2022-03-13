@@ -115,7 +115,7 @@ namespace Testing4
             //Boolean variable to store results of validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 OrderNo = 21;
+            Int32 OrderNo = 1;
             Found = anOrder.Find(OrderNo);
             //test to see if the result is true
             Assert.IsTrue(Found);
@@ -131,11 +131,11 @@ namespace Testing4
             //boolean variable to record if data is ok
             Boolean OK = true;
             //create test data
-            Int32 OrderNo = 21;
+            Int32 OrderNo = 1;
             //invoke the method
             Found = anOrder.Find(OrderNo);
             //check the order no
-            if (anOrder.OrderNo != 21)
+            if (anOrder.OrderNo != 1)
             {
                 OK = false;
             }
@@ -153,7 +153,7 @@ namespace Testing4
             //boolean variable to record if data is ok
             Boolean OK = true;
             //create test data
-            Int32 OrderNo = 21;
+            Int32 OrderNo = 1;
             //invoke the method
             Found = anOrder.Find(OrderNo);
             //check the order no
@@ -175,7 +175,7 @@ namespace Testing4
             //boolean variable to record if data is ok
             Boolean OK = true;
             //create test data
-            Int32 OrderNo = 21;
+            Int32 OrderNo = 1;
             //invoke the method
             Found = anOrder.Find(OrderNo);
             //check the order no
@@ -197,7 +197,7 @@ namespace Testing4
             //boolean variable to record if data is ok
             Boolean OK = true;
             //create test data
-            Int32 OrderNo = 21;
+            Int32 OrderNo = 1;
             //invoke the method
             Found = anOrder.Find(OrderNo);
             //check the order no
@@ -219,7 +219,7 @@ namespace Testing4
             //boolean variable to record if data is ok
             Boolean OK = true;
             //create test data
-            Int32 OrderNo = 21;
+            Int32 OrderNo = 1;
             //invoke the method
             Found = anOrder.Find(OrderNo);
             //check the order no
@@ -241,7 +241,7 @@ namespace Testing4
             //boolean variable to record if data is ok
             Boolean OK = true;
             //create test data
-            Int32 OrderNo = 21;
+            Int32 OrderNo = 1;
             //invoke the method
             Found = anOrder.Find(OrderNo);
             //check the order no
@@ -263,7 +263,7 @@ namespace Testing4
             //boolean variable to record if data is ok
             Boolean OK = true;
             //create test data
-            Int32 OrderNo = 21;
+            Int32 OrderNo = 1;
             //invoke the method
             Found = anOrder.Find(OrderNo);
             //check the order no
