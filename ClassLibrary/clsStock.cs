@@ -22,8 +22,8 @@ namespace ClassLibrary
         }
 
         private string mPhoneDescription;
-        public string PhoneDescription 
-        { 
+        public string PhoneDescription
+        {
             get
             {
                 return mPhoneDescription;
@@ -93,15 +93,31 @@ namespace ClassLibrary
 
         public bool Find(int phoneNo)
         {
-            //set the private data members to the test data value
-            mPhoneNo = 21;
-            mPhoneDescription = "Test Description";
-            mPhoneColour = "Test Phone Colour";
-            mDateReleased = Convert.ToDateTime("16/04/2015");
-            mPrice = Convert.ToDouble("499.99");
-            mAvailability = true;
-            //always return true
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the phone no to search for
+            DB.AddParameter("@PhoneNo", PhoneNo);
+            //execute the stored procedure 
+            DB.Execute("sproc_tblStock_FilterByPhoneNo");
+            //if one record is found (there should be either one or zero!)
+            if (DB.Count == 1)
+            {
+                //set the private data members to the test data value
+                mPhoneNo = Convert.ToInt32(DB.DataTable.Rows[0]["PhoneNo"]);
+                mPhoneDescription = Convert.ToString(DB.DataTable.Rows[0]["PhoneDescription"]);
+                mPhoneColour = Convert.ToString(DB.DataTable.Rows[0]["PhoneColour"]);
+                mDateReleased = Convert.ToDateTime(DB.DataTable.Rows[0]["DateReleased"]);
+                mPrice = Convert.ToDouble(DB.DataTable.Rows[0]["Price"]);
+                mAvailability = Convert.ToBoolean(DB.DataTable.Rows[0]["Availability"]);
+                //always return true
+                return true;
+            }
+            //if no record was found
+            else
+            {
+                //return false indicating a problem
+                return false;
+            }
 
         }
     }
