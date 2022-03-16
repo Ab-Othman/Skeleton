@@ -8,8 +8,6 @@
 </head>
 <body style="margin-top: 33px">
     <form id="form1" runat="server">
-        <div>
-        </div>
         <asp:Label ID="lblPhoneNo" runat="server" Text="Phone ID Number" width="303px"></asp:Label>
         <asp:TextBox ID="txtPhoneNo" runat="server"></asp:TextBox>
         <p>
@@ -37,6 +35,7 @@
         <p>
             <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
             <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
         </p>
     </form>
 </body>
