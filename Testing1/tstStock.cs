@@ -127,11 +127,11 @@ namespace Testing1
             //Boolean variable to record if data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 PhoneNo = 21;
+            Int32 PhoneNo = 1;
             //invoke the method
             Found = AnStock.Find(PhoneNo);
             //check the stock no
-            if (AnStock.PhoneNo != 21)
+            if (AnStock.PhoneNo != 1)
             {
                 OK = false;
             }
@@ -149,11 +149,11 @@ namespace Testing1
             //Boolean variable to record if data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 PhoneNo = 21;
+            Int32 PhoneNo = 1;
             //invoke the method
             Found = AnStock.Find(PhoneNo);
             //check the property
-            if (AnStock.PhoneDescription != "Test Description")
+            if (AnStock.PhoneDescription != "Iphone 13 Max")
             {
                 OK = false;
             }
@@ -172,11 +172,11 @@ namespace Testing1
             //Boolean variable to record if data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 PhoneNo = 21;
+            Int32 PhoneNo = 1;
             //invoke the method
             Found = AnStock.Find(PhoneNo);
             //check the property
-            if (AnStock.PhoneColour != "Test Phone Colour")
+            if (AnStock.PhoneColour != "Red")
             {
                 OK = false;
             }
@@ -186,7 +186,7 @@ namespace Testing1
 
         [TestMethod]
 
-        public void TestDateReleased()
+        public void TestDateAdded()
         {
             //create an instance of the class we want to create
             clsStock AnStock = new clsStock();
@@ -195,11 +195,11 @@ namespace Testing1
             //Boolean variable to record if data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 PhoneNo = 21;
+            Int32 PhoneNo = 1;
             //invoke the method
             Found = AnStock.Find(PhoneNo);
             //check the property
-            if (AnStock.DateReleased != Convert.ToDateTime("16/04/2015"))
+            if (AnStock.DateReleased != Convert.ToDateTime("24/10/2021"))
             {
                 OK = false;
             }
@@ -220,11 +220,11 @@ namespace Testing1
             //Boolean variable to record if data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 PhoneNo = 21;
+            Int32 PhoneNo = 1;
             //invoke the method
             Found = AnStock.Find(PhoneNo);
             //check the property
-            if (AnStock.Price != Convert.ToDouble(499.99))
+            if (AnStock.Price != Convert.ToDouble(500))
             {
                 OK = false;
             }
@@ -243,7 +243,7 @@ namespace Testing1
             //Boolean variable to record if data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 PhoneNo = 21;
+            Int32 PhoneNo = 1;
             //invoke the method
             Found = AnStock.Find(PhoneNo);
             //check the property
