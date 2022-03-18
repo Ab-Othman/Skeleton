@@ -660,7 +660,7 @@ namespace Testing2
             //invoke the method
             Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
             //test to see result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -737,7 +737,7 @@ namespace Testing2
             //invoke the method
             Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
             //test to see result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -785,7 +785,7 @@ namespace Testing2
             //invoke the method
             Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
             //test to see result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
   
         [TestMethod]
@@ -910,7 +910,7 @@ namespace Testing2
             //invoke the method
             Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
             //test to see result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
     }
     
