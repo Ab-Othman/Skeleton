@@ -15,27 +15,44 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
-        //create a new instance of clsSupplier
+        //create a new instance
         clsSupplier ASupplier = new clsSupplier();
-        
-        //capture the SupplierName
-        ASupplier.SupplierName = txtSupplierName.Text;
-        //capture the ShippingFrom
-        ASupplier.ShippingFromAddress = txtShippingFromAddress.Text;
-        //capture Email
-        ASupplier.Email = txtEmail.Text;
-        //capture PhoneNumber
-        ASupplier.PhoneNumber = txtPhoneNumber.Text;
-        //capture SupplierID
-        ASupplier.SupplierID = Convert.ToInt32(txtSupplierID.Text);
+        //capture supplier name
+        string SupplierName = txtSupplierName.Text;
+        //capture phone number 
+        string PhoneNumber = txtPhoneNumber.Text;
+        //capture email
+        string Email = txtEmail.Text;
+        //capture Shipping from address
+        string ShippingFromAddress = txtShippingFromAddress.Text;
         //capture date
-        ASupplier.DateAdded = Convert.ToDateTime(txtDateAdded.Text);
-        //capture active
-        ASupplier.Active = chkActive.Checked;
-        //store the address in the session object
-        Session["ASupplier"] = ASupplier;
-        //navigate to the viewer page
-        Response.Redirect("SupplierViewer.aspx");
+        string DateAdded = txtDateAdded.Text;
+        //variable to store any error messages
+        string Error = "";
+        //validate the data
+        Error = ASupplier.Valid(PhoneNumber, Email, DateAdded, ShippingFromAddress, SupplierName);
+        if (Error == "")
+        {
+            //capture the supplier name
+            ASupplier.SupplierName = SupplierName;
+            //capture the phone number
+            ASupplier.PhoneNumber = PhoneNumber;
+            //capture email
+            ASupplier.Email = Email;
+            //capture shipping from address
+            ASupplier.ShippingFromAddress = ShippingFromAddress;
+            //capture date
+            ASupplier.DateAdded = Convert.ToDateTime(DateAdded);
+            //store the address in the session object
+            Session["ASupplier"] = ASupplier;
+            //redirect to viewer page
+            Response.Write("SupplierDataEntry.aspx");
+        }
+        else
+        {
+            //display error message
+            lblError.Text = Error;
+        }
     }
 
 
