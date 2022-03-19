@@ -22,7 +22,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
             //create some test data
-            int TestData = 123456789;
+            int TestData = 1;
             //assign the data to the property 
             ACustomer.CustomerUserId = TestData;
             //test to see if the two values are the same
@@ -35,7 +35,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
 
-            String TestData = "xyz";
+            String TestData = "abc";
 
             ACustomer.CustomerFullName = TestData;
 
@@ -48,7 +48,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
 
-            String TestData = "12345";
+            String TestData = "789654321";
 
             ACustomer.CustomerPhoneNumber = TestData;
 
@@ -61,7 +61,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
 
-            String TestData = "xyz@gmail.com";
+            String TestData = "abc@gmail.com";
 
             ACustomer.CustomerEmailId = TestData;
 
@@ -87,7 +87,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
 
-            String TestData = "Some City";
+            String TestData = "Some City, XXX XXX";
 
             ACustomer.CustomerAddress = TestData;
 
@@ -115,14 +115,15 @@ namespace Testing3
 
             Boolean Found = false;
 
-            Int32 CustomerUserId = 12312;
+            Int32 CustomerUserId = 1;
 
             Found = ACustomer.Find(CustomerUserId);
 
             Assert.IsTrue(Found);
         }
 
-        public void TestCustomerUserIdNoFound()
+        [TestMethod]
+        public void TestCustomerUserIdFound()
         {
             clsCustomer ACustomer = new clsCustomer();
 
@@ -142,5 +143,130 @@ namespace Testing3
             Assert.IsTrue(OK);
 
         }
+
+        [TestMethod]
+        public void TestCustomerFullNameFound()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 CustomerUserId = 12312;
+
+            Found = ACustomer.Find(CustomerUserId);
+
+            if(ACustomer.CustomerFullName != "xyz")
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestCustomerPhoneNumberFound()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 CustomerUserId = 12312;
+
+            Found = ACustomer.Find(CustomerUserId);
+
+            if (ACustomer.CustomerPhoneNumber != "654321789")
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+
+        [TestMethod]
+        public void TestCustomerEmailIdFound()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 CustomerUserId = 12312;
+
+            Found = ACustomer.Find(CustomerUserId);
+
+            if (ACustomer.CustomerEmailId != "xyz@gmail.com")
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+        public void TestCustomerAccountCreatedFound()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 CustomerUserId = 12312;
+
+            Found = ACustomer.Find(CustomerUserId);
+
+            if (ACustomer.CustomerAccountCreated != Convert.ToDateTime("05/05/2011"))
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+        public void TestCustomerAddressFound()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 CustomerUserId = 12312;
+
+            Found = ACustomer.Find(CustomerUserId);
+
+            if (ACustomer.CustomerAddress != "Leicester City, LE3 5TE")
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+        public void TestSubscribedToReceiveMailFound()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 CustomerUserId = 12312;
+
+            Found = ACustomer.Find(CustomerUserId);
+
+            if (ACustomer.SubscribedToReceiveMail != true)
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
     }
 }
