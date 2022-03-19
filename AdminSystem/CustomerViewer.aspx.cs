@@ -14,7 +14,7 @@ public partial class _1Viewer : System.Web.UI.Page
 
         ACustomer = (clsCustomer)Session["ACustomer"];
 
-        Response.Write(ACustomer.CustomerUserId );
+        Response.Write(ACustomer.CustomerUserId.ToString() + "<br/>");
 
         Response.Write(ACustomer.CustomerFullName += "<br/>");
 
@@ -22,7 +22,7 @@ public partial class _1Viewer : System.Web.UI.Page
 
         Response.Write(ACustomer.CustomerEmailId += "<br/>");
 
-        Response.Write(ACustomer.CustomerAccountCreated);
+        Response.Write(ACustomer.CustomerAccountCreated + "<br/>");
 
         Response.Write(ACustomer.CustomerAddress += "<br/>");
 
