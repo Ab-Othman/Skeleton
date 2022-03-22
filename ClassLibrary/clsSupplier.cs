@@ -116,10 +116,10 @@ namespace ClassLibrary
                 mSupplierID = Convert.ToInt32(DB.DataTable.Rows[0]["SupplierID"]);
                 mPhoneNumber = Convert.ToString(DB.DataTable.Rows[0]["PhoneNumber"]);
                 mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
-                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
                 mShippingFromAddress = Convert.ToString(DB.DataTable.Rows[0]["ShippingFromAddress"]);
                 mSupplierName = Convert.ToString(DB.DataTable.Rows[0]["SupplierName"]);
                 mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
                 //return that everything worked ok
                 return true;
             }

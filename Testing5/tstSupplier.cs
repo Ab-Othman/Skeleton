@@ -144,11 +144,11 @@ namespace Testing2
             //boolean variable to record if data is ok
             Boolean OK = true;
             //create test data
-            Int32 SupplierID = 1;
+            Int32 SupplierID = 3;
             //invoke the method
             Found = ASupplier.Find(SupplierID);
             //check the supplier ID
-            if (ASupplier.SupplierID != 1)
+            if (ASupplier.SupplierID != 3)
             {
                 OK = false;
             }
