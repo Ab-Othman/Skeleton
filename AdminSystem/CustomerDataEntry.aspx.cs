@@ -37,6 +37,28 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     }
 
-       
 
+
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        //create an instance of class
+        clsCustomer ACustomer = new clsCustomer();
+
+        Int32 CustomerUserId;
+
+        Boolean Found = false;
+        CustomerUserId = Convert.ToInt32(txtCustomerUserId.Text);
+
+        Found = ACustomer.Find(CustomerUserId);
+        if(Found == true)
+        {
+            txtCustomerFullName.Text = ACustomer.CustomerFullName;
+            txtCustomerPhoneNumber.Text = ACustomer.CustomerPhoneNumber;
+            txtCustomerEmailId.Text = ACustomer.CustomerEmailId;
+            txtCustomerAccountCreated.Text = ACustomer.CustomerAccountCreated.ToString();
+            txtCustomerAddress.Text = ACustomer.CustomerAddress;
+            
+        }
+    }
 }

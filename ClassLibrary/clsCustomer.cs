@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 
 namespace ClassLibrary
 {
@@ -102,22 +103,28 @@ namespace ClassLibrary
 
         public bool Find(int CustomerUserId)
         {
-            //set the private data members to the test data value
-            mCustomerUserId = 12312;
+            clsDataConnection DB = new clsDataConnection();
 
-            mCustomerFullName = "xyz";
+            DB.AddParameter("@CustomerUserId", CustomerUserId);
 
-            mCustomerPhoneNumber = "654321789";
+            DB.Execute("sproc_tblCustomer_FilterByCustomerUserId");
 
-            mCustomerEmailId = "xyz@gmail.com";
+            if (DB.Count == 1)
+            {
+                mCustomerUserId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerUserId"]);
+                mCustomerFullName = Convert.ToString(DB.DataTable.Rows[0]["CustomerFullName"]);
+                mCustomerPhoneNumber = Convert.ToString(DB.DataTable.Rows[0]["CustomerPhoneNumber"]);
+                mCustomerEmailId = Convert.ToString(DB.DataTable.Rows[0]["CustomerEmailId"]);
+                mCustomerAccountCreated = Convert.ToDateTime(DB.DataTable.Rows[0]["CustomerAccountCreated"]);
+                mCustomerAddress = Convert.ToString(DB.DataTable.Rows[0]["CustomerAddress"]);
+                mSubscribedToReceiveMail = Convert.ToBoolean(DB.DataTable.Rows[0]["SubscribedToReceiveMail"]);
 
-            mCustomerAccountCreated = Convert.ToDateTime("05/05/2011");
-
-            mCustomerAddress = "Leicester City, LE3 5TE";
-
-            mSubscribedToReceiveMail = true;
-            //always return true
-            return true;
+                return true;
+            }
+            else
+            {
+                return false;
+            }              
         }
     }
 }
