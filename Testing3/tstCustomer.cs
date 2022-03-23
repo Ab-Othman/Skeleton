@@ -7,6 +7,16 @@ namespace Testing3
     [TestClass]
     public class tstCustomer
     {
+
+        //create test data to pass method
+
+        string CustomerFullName = "Nidhi Stevens";
+        string CustomerPhoneNumber = "277091025";
+        string CustomerEmailId = "nidhi.stevens@gmail.com";
+        string CustomerAccountCreated = DateTime.Now.Date.ToString();
+        string CustomerAddress = "Kew Drive, Leicester, LE3 4TY";        
+
+
         [TestMethod]
         public void InstanceOk()
         {
@@ -35,7 +45,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
 
-            String TestData = "abc";
+            String TestData = "Nidhi Stevens";
 
             ACustomer.CustomerFullName = TestData;
 
@@ -48,7 +58,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
 
-            String TestData = "789654321";
+            String TestData = "277091025";
 
             ACustomer.CustomerPhoneNumber = TestData;
 
@@ -61,7 +71,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
 
-            String TestData = "abc@gmail.com";
+            String TestData = "nidhi.stevens@gmail.com";
 
             ACustomer.CustomerEmailId = TestData;
 
@@ -87,7 +97,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
 
-            String TestData = "Some City, XXX XXX";
+            String TestData = "Kew Drive, Leicester, LE3 4TY.";
 
             ACustomer.CustomerAddress = TestData;
 
@@ -131,11 +141,11 @@ namespace Testing3
 
             Boolean OK = true;
 
-            Int32 CustomerUserId = 12312;
+            Int32 CustomerUserId = 1;
 
             Found = ACustomer.Find(CustomerUserId);
 
-            if(ACustomer.CustomerUserId != 12312)
+            if(ACustomer.CustomerUserId != 1)
             {
                 OK = false;
             }
@@ -153,11 +163,11 @@ namespace Testing3
 
             Boolean OK = true;
 
-            Int32 CustomerUserId = 12312;
+            Int32 CustomerUserId = 1;
 
             Found = ACustomer.Find(CustomerUserId);
 
-            if(ACustomer.CustomerFullName != "xyz")
+            if(ACustomer.CustomerFullName != "Nidhi Stevens")
             {
                 OK = false;
             }
@@ -174,11 +184,11 @@ namespace Testing3
 
             Boolean OK = true;
 
-            Int32 CustomerUserId = 12312;
+            Int32 CustomerUserId = 1;
 
             Found = ACustomer.Find(CustomerUserId);
 
-            if (ACustomer.CustomerPhoneNumber != "654321789")
+            if (ACustomer.CustomerPhoneNumber != "277091025")
             {
                 OK = false;
             }
@@ -196,11 +206,11 @@ namespace Testing3
 
             Boolean OK = true;
 
-            Int32 CustomerUserId = 12312;
+            Int32 CustomerUserId = 1;
 
             Found = ACustomer.Find(CustomerUserId);
 
-            if (ACustomer.CustomerEmailId != "xyz@gmail.com")
+            if (ACustomer.CustomerEmailId != "nidhi.stevens@gmail.com")
             {
                 OK = false;
             }
@@ -216,11 +226,11 @@ namespace Testing3
 
             Boolean OK = true;
 
-            Int32 CustomerUserId = 12312;
+            Int32 CustomerUserId = 1;
 
             Found = ACustomer.Find(CustomerUserId);
 
-            if (ACustomer.CustomerAccountCreated != Convert.ToDateTime("05/05/2011"))
+            if (ACustomer.CustomerAccountCreated != Convert.ToDateTime("26/07/2002"))
             {
                 OK = false;
             }
@@ -236,11 +246,11 @@ namespace Testing3
 
             Boolean OK = true;
 
-            Int32 CustomerUserId = 12312;
+            Int32 CustomerUserId = 1;
 
             Found = ACustomer.Find(CustomerUserId);
 
-            if (ACustomer.CustomerAddress != "Leicester City, LE3 5TE")
+            if (ACustomer.CustomerAddress != "Kew Drive, Leicester, LE3 4TY")
             {
                 OK = false;
             }
@@ -256,7 +266,7 @@ namespace Testing3
 
             Boolean OK = true;
 
-            Int32 CustomerUserId = 12312;
+            Int32 CustomerUserId = 1;
 
             Found = ACustomer.Find(CustomerUserId);
 
