@@ -17,27 +17,47 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         clsCustomer ACustomer = new clsCustomer();
 
-        ACustomer.CustomerUserId = Convert.ToInt32(txtCustomerUserId.Text);
+        string CustomerFullName = txtCustomerFullName.Text;
 
-        ACustomer.CustomerFullName = txtCustomerFullName.Text;
+        string CustomerPhoneNumber = txtCustomerPhoneNumber.Text;
 
-        ACustomer.CustomerPhoneNumber= txtCustomerPhoneNumber.Text;
+        string CustomerEmailId = txtCustomerEmailId.Text;
 
-        ACustomer.CustomerEmailId = txtCustomerEmailId.Text;
+        string CustomerAccountCreated = txtCustomerAccountCreated.Text;
 
-        ACustomer.CustomerAccountCreated = Convert.ToDateTime(txtCustomerAccountCreated.Text);
+        string CustomerAddress = txtCustomerAddress.Text; ;
 
-        ACustomer.CustomerAddress = txtCustomerAddress.Text;
+        string Error = "";
 
-        ACustomer.SubscribedToReceiveMail = chkSubscribedToReceiveMail.Checked;
-        
-        Session["ACustomer"] = ACustomer;
+        Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerEmailId, CustomerAccountCreated, CustomerAddress);
+        if (Error == "")
+        {
+            ACustomer.CustomerFullName = CustomerFullName;
 
-        Response.Redirect("CustomerViewer.aspx");
+            //capture customer phone number
+            ACustomer.CustomerPhoneNumber = CustomerPhoneNumber;
 
+            //capture customer email id
+            ACustomer.CustomerEmailId = CustomerEmailId;
+
+            //capture customer account create date
+            ACustomer.CustomerAccountCreated = Convert.ToDateTime(CustomerAccountCreated);
+
+            //capture customer address
+            ACustomer.CustomerAddress = CustomerAddress;
+
+            //store the customer in Session object
+            Session["ACustomer"] = ACustomer;
+
+            //redirectr to the viewer page
+            Response.Redirect("CustomerViewer.aspx");
+        }
+        else
+        {
+            //display error message
+            lblError.Text = Error;
+        }
     }
-
-
 
 
     protected void Button1_Click(object sender, EventArgs e)
@@ -60,5 +80,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtCustomerAddress.Text = ACustomer.CustomerAddress;
             
         }
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+
     }
 }
