@@ -99,6 +99,7 @@ namespace ClassLibrary
                 //set private data
                 mSupplierName = value;
             }
+
         }
 
         public bool Find(int SupplierID)
