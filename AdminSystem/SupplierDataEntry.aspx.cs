@@ -46,7 +46,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //store the address in the session object
             Session["ASupplier"] = ASupplier;
             //redirect to viewer page
-            Response.Write("SupplierDataEntry.aspx");
+            Response.Write("SupplierList.aspx");
         }
         else
         {

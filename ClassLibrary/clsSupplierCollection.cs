@@ -7,9 +7,14 @@ namespace ClassLibrary
     {
         //private data member for list
         List<clsSupplier> mSupplierList = new List<clsSupplier>();
+        private clsSupplier mThisSupplier; 
 
         public clsSupplierCollection()
         {
+            //private data member for list
+            List<clsSupplier> mSupplierList = new List<clsSupplier>();
+            //private data member thisSupplier
+            clsSupplier mThisSupplier = new clsSupplier();
             //var for the index
             Int32 Index = 0;
             //var to store the record count
@@ -75,6 +80,7 @@ namespace ClassLibrary
                 mSupplierList = value;
             }
         }
+     
         public int Count
         {
             get
@@ -87,7 +93,40 @@ namespace ClassLibrary
                 //worry later 
             }
         }
-        public clsSupplier ThisSupplier { get; set; }
+        public clsSupplier ThisSupplier
+        {
+            get
+            {
+                return mThisSupplier;
+            }
+            set
+            {
+                mThisSupplier = value;
+            }
+        }
+
+        public int Add()
+        {
+            //adds a new record to the database based on the values of mThisSupplier
+            //set the primary key value of the new record
+            mThisSupplier.SupplierID = 0;
+            //return the primary key of the new record
+            return mThisSupplier.SupplierID;
+            //adds a new record to the database based on the values of thisAddress
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set parameters for the stored procedure 
+            DB.AddParameter("@SupplierID", mThisSupplier.SupplierID);
+            DB.AddParameter("@Email", mThisSupplier.Email);
+            DB.AddParameter("@PhoneNumber", mThisSupplier.PhoneNumber);
+            DB.AddParameter("@SupplierName", mThisSupplier.SupplierName);
+            DB.AddParameter("@ShippingFromAddress", mThisSupplier.ShippingFromAddress);
+            DB.AddParameter("@DateAdded", mThisSupplier.DateAdded);
+            DB.AddParameter("@Active", mThisSupplier.Active);
+            //execute the query returning the primary key value 
+            return DB.Execute("sproc_tblSupplier_Insert");
+        }
+
     }
       
         
