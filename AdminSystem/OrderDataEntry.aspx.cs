@@ -18,17 +18,38 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //new instance of clsOrder
         clsOrder AnOrder = new clsOrder();
         //capture order details
-        AnOrder.OrderNo = int.Parse(txtOrderNo.Text);
-        AnOrder.CustomerUserId = int.Parse(txtCustomerUserId.Text);
-        AnOrder.OrderDate = DateTime.Parse(txtOrderDate.Text);
-        AnOrder.ShippingAddress = txtShippingAddress.Text;
-        AnOrder.PaymentMethod = txtPaymentMethod.Text;
-        AnOrder.PaymentReceived = chkPaymentReceived.Checked;
-        AnOrder.OrderStatus = txtOrderStatus.Text;
-        //store the details in the session object
-        Session["AnOrder"] = AnOrder;
-        //navigate to the viewer page
-        Response.Redirect("OrderViewer.aspx");
+        string OrderNo = txtOrderNo.Text;
+        string CustomerUserId = txtCustomerUserId.Text;
+        string OrderDate = txtOrderDate.Text;
+        string ShippingAddress = txtShippingAddress.Text;
+        string PaymentMethod = txtPaymentMethod.Text;
+        bool PaymentReceived = chkPaymentReceived.Checked;
+        string OrderStatus = txtOrderStatus.Text;
+
+        //varibale to store any error messages
+        string Error = "";
+        //validate the data
+        Error = AnOrder.Valid(OrderDate, ShippingAddress, PaymentMethod, OrderStatus);
+        if (Error == "")
+        {
+            AnOrder.OrderNo = int.Parse(OrderNo);
+            AnOrder.CustomerUserId = int.Parse(CustomerUserId);
+            AnOrder.OrderDate = Convert.ToDateTime(OrderDate);
+            AnOrder.ShippingAddress = ShippingAddress;
+            AnOrder.PaymentMethod = PaymentMethod;
+            AnOrder.PaymentReceived = PaymentReceived;
+            AnOrder.OrderStatus = OrderStatus;
+
+            //store order in session object
+            Session["AnOrder"] = AnOrder;
+            //redirect to the viewer page
+            Response.Write("AddressViewer.aspx");
+        } 
+        else
+        {
+            //display error message
+            lblError.Text = Error;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
