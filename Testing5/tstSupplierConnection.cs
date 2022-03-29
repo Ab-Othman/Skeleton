@@ -121,5 +121,45 @@ namespace Testing5
             Assert.AreEqual(AllSuppliers.ThisSupplier, TestItem);
         }
 
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            //create an instance of class we want to create
+            clsSupplierCollection AllSuppliers = new clsSupplierCollection();
+            //create item of test data
+            clsSupplier TestItem = new clsSupplier();
+            //var to store primary key
+            Int32 PrimaryKey = 0;
+            //set its property 
+            TestItem.Active = true;
+            TestItem.SupplierID = 3;
+            TestItem.SupplierName = "huawei";
+            TestItem.Email = "huawei@huawei.co.uk";
+            TestItem.ShippingFromAddress = "China";
+            TestItem.PhoneNumber = "07559983467";
+            TestItem.DateAdded = DateTime.Now.Date;
+            //set thisSupplier to test data
+            AllSuppliers.ThisSupplier = TestItem;
+            //add the record
+            PrimaryKey = AllSuppliers.Add();
+            //set primary key to test data
+            TestItem.SupplierID = PrimaryKey;
+            //modify the test data
+            TestItem.Active = false;
+            TestItem.SupplierID = 1;
+            TestItem.SupplierName = "apple";
+            TestItem.Email = "apple@gmail.com";
+            TestItem.ShippingFromAddress = "UK";
+            TestItem.PhoneNumber = "07982345289";
+            TestItem.DateAdded = DateTime.Now.Date;
+            //set the record based on the new test data
+            AllSuppliers.ThisSupplier = TestItem;
+            //update the record
+            AllSuppliers.Update();
+            //find the record
+            AllSuppliers.ThisSupplier.Find(PrimaryKey);
+            //test to see thisSupplier matches test data
+            Assert.AreEqual(AllSuppliers.ThisSupplier, TestItem);
+        }
     }
 }

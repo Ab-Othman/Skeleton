@@ -109,7 +109,7 @@ namespace ClassLibrary
         {
             //adds a new record to the database based on the values of mThisSupplier
             //set the primary key value of the new record
-            mThisSupplier.SupplierID = 0;
+            mThisSupplier.SupplierID = 3;
             //return the primary key of the new record
             return mThisSupplier.SupplierID;
             //adds a new record to the database based on the values of thisAddress
@@ -127,6 +127,22 @@ namespace ClassLibrary
             return DB.Execute("sproc_tblSupplier_Insert");
         }
 
+        public void Update()
+        {
+            //update an existing record based on the values of thisSupplier
+            //connect to database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure 
+            DB.AddParameter("@SupplierID", mThisSupplier.SupplierID);
+            DB.AddParameter("@Email", mThisSupplier.Email);
+            DB.AddParameter("@PhoneNumber", mThisSupplier.PhoneNumber);
+            DB.AddParameter("@SupplierName", mThisSupplier.SupplierName);
+            DB.AddParameter("@ShippingFromAddress", mThisSupplier.ShippingFromAddress);
+            DB.AddParameter("@DateAdded", mThisSupplier.DateAdded);
+            DB.AddParameter("@Active", mThisSupplier.Active);
+            //execute the stored procedure
+            DB.Execute("sproc_tblSupplier_Update");
+        }
     }
       
         
