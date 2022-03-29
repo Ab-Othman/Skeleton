@@ -427,7 +427,7 @@ namespace Testing4
             //invoke the method
             Error = anOrder.Valid(OrderDate, ShippingAddress, PaymentMethod, OrderStatus);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -489,7 +489,7 @@ namespace Testing4
             //invoke the method
             Error = anOrder.Valid(OrderDate, ShippingAddress, PaymentMethod, OrderStatus);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -552,7 +552,7 @@ namespace Testing4
             //invoke the method
             Error = anOrder.Valid(OrderDate, ShippingAddress, PaymentMethod, OrderStatus);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -628,7 +628,7 @@ namespace Testing4
             //invoke the method
             Error = anOrder.Valid(OrderDate, ShippingAddress, PaymentMethod, OrderStatus);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -659,7 +659,7 @@ namespace Testing4
             //invoke the method
             Error = anOrder.Valid(OrderDate, ShippingAddress, PaymentMethod, OrderStatus);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -674,7 +674,7 @@ namespace Testing4
             //invoke the method
             Error = anOrder.Valid(OrderDate, ShippingAddress, PaymentMethod, OrderStatus);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -737,7 +737,7 @@ namespace Testing4
             //invoke the method
             Error = anOrder.Valid(OrderDate, ShippingAddress, PaymentMethod, OrderStatus);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
