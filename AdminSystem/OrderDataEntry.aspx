@@ -19,7 +19,7 @@
         </p>
         <p>
             <asp:Label ID="lblOrderDate" runat="server" Text="Order Date" width="112px"></asp:Label>
-        <asp:TextBox ID="txtOrderDate" runat="server" TextMode="Date"></asp:TextBox>
+        <asp:TextBox ID="txtOrderDate" runat="server" ></asp:TextBox>
         </p>
         <p>
             <asp:Label ID="lblShippingAddress" runat="server" Text="Shipping Address" width="112px"></asp:Label>

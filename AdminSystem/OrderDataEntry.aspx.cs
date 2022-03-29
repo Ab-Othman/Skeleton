@@ -48,7 +48,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
             //display the values of the properties in the form
             txtCustomerUserId.Text = Convert.ToString(AnOrder.CustomerUserId);
-            txtOrderDate.Text = Convert.ToString(AnOrder.OrderDate);
+            txtOrderDate.Text = (AnOrder.OrderDate).ToString("dd'/'MM'/'yyyy");
             txtShippingAddress.Text = AnOrder.ShippingAddress;
             txtPaymentMethod.Text = AnOrder.PaymentMethod;
             txtOrderStatus.Text = AnOrder.OrderStatus;
