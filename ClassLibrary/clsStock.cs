@@ -38,7 +38,6 @@ namespace ClassLibrary
         {
             get
             {
-
                 //return the private data
                 return mPhoneColour;
             }
@@ -91,7 +90,7 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find(int phoneNo)
+        public bool Find(int PhoneNo)
         {
             //create an instance of the data connection
             clsDataConnection DB = new clsDataConnection();

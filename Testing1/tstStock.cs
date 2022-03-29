@@ -50,7 +50,7 @@ namespace Testing1
             //create and instance of the class we want to create 
             clsStock AnStock = new clsStock();
             //create some test data to assign property
-            string TestData = "Red";
+            string TestData = "Yellow";
             //assign the data to the property
             AnStock.PhoneColour = TestData;
             //test to see that two values are the same
@@ -161,28 +161,7 @@ namespace Testing1
             Assert.IsTrue(OK);
         }
 
-        [TestMethod]
 
-        public void TestPhoneColour()
-        {
-            //create an instance of the class we want to create
-            clsStock AnStock = new clsStock();
-            //Boolean variable to store the results of the validation
-            Boolean Found = false;
-            //Boolean variable to record if data is OK
-            Boolean OK = true;
-            //create some test data to use with the method
-            Int32 PhoneNo = 1;
-            //invoke the method
-            Found = AnStock.Find(PhoneNo);
-            //check the property
-            if (AnStock.PhoneColour != "Red")
-            {
-                OK = false;
-            }
-            //test to see if the result is true
-            Assert.IsTrue(OK);
-        }
 
         [TestMethod]
 
@@ -254,5 +233,30 @@ namespace Testing1
             //test to see if the result is true
             Assert.IsTrue(OK);
         }
+
+        [TestMethod]
+        public void TestPhoneColour()
+        {
+            //create an instance of the clas we want to create
+            clsStock AnStock = new clsStock();
+            //Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //Boolean variable to record if data is OK
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 PhoneNo = 1;
+            Found = AnStock.Find(PhoneNo);
+            //check the property
+            if (AnStock.PhoneColour != "Red")
+            {
+                OK = false;
+            }
+            //test to see if the result is true
+            Assert.IsTrue(OK);
+        }
     }
-}
+
+
+
+
+    }
