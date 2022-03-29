@@ -8,27 +8,36 @@ using ClassLibrary;
 
 public partial class _1_List : System.Web.UI.Page
 {
-
+    Int32 SupplierID;
     protected void Page_Load(object sender, EventArgs e)
     {
-        //if this is the first time the page is displayed 
-        if(IsPostBack == false)
         {
-            //update the list box
-            DisplaySuppliers();
+            //get the number of the Supplier to be processed
+            SupplierID = Convert.ToInt32(Session["SupplierID"]);
+            if (IsPostBack == false)
+            {
+                //if this is not a new record
+                if (SupplierID != -1)
+                {
+                    //display current data for the record
+                    DisplaySuppliers();
+                }
+            }
         }
+
     }
-   void DisplaySuppliers()
+
+    private void DisplaySuppliers()
     {
-        //create an intance of the Supplier collection
+        //create an instance of supplier collection
         clsSupplierCollection Suppliers = new clsSupplierCollection();
-        //set the data source to list of addresses in the collection
+        //set data source to list of suppliers in collection
         lstSupplierList.DataSource = Suppliers.SupplierList;
         //set name of primary key
         lstSupplierList.DataValueField = "SupplierID";
-        //set the data field to display
+        //set data field to display
         lstSupplierList.DataTextField = "SupplierName";
-        //bind the data to the list
+        //bind data to list
         lstSupplierList.DataBind();
     }
 
@@ -38,5 +47,25 @@ public partial class _1_List : System.Web.UI.Page
         Session["SupplierID"] = -1;
         //redirect to the data entry page
         Response.Redirect("SupplierDataEntry.aspx");
+    }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        //var to store the primary key value of the record to be edited
+        Int32 SupplierID;
+        //if a record has been selected from the list
+        if(lstSupplierList.SelectedIndex != -1)
+        {
+            //get primary key value of the record to edit
+            SupplierID = Convert.ToInt32(lstSupplierList.SelectedValue);
+            //store the data in the section object
+            Session["SupplierID"] = SupplierID;
+            //redirect to edit page
+            Response.Redirect("SupplierDataEntry.aspx");
+        }
+        else //if no record selected
+        {
+            lblError.Text = "Please select a record from the list";
+        }
     }
 }
