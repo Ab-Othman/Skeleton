@@ -15,8 +15,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOK_Click(Object sender, EventArgs e)
     {
+        //create an instance of a clsCustomer
         clsCustomer ACustomer = new clsCustomer();
 
+        //capture
         string CustomerFullName = txtCustomerFullName.Text;
 
         string CustomerPhoneNumber = txtCustomerPhoneNumber.Text;
@@ -25,7 +27,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         string CustomerAccountCreated = txtCustomerAccountCreated.Text;
 
-        string CustomerAddress = txtCustomerAddress.Text; ;
+        string CustomerAddress = txtCustomerAddress.Text; 
 
         string Error = "";
 
@@ -46,11 +48,21 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //capture customer address
             ACustomer.CustomerAddress = CustomerAddress;
 
-            //store the customer in Session object
-            Session["ACustomer"] = ACustomer;
 
-            //redirectr to the viewer page
-            Response.Redirect("CustomerViewer.aspx");
+            //adding new code here, last week's code
+            ACustomer.SubscribedToReceiveMail = chkSubscribedToReceiveMail.Checked;
+
+            //create a new instamce of the customer collection
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+
+            //set the ThisCustomer property
+            CustomerList.ThisCustomer = ACustomer;
+
+            //add the new record
+            CustomerList.Add();
+
+            //redirect to the listpage
+            Response.Redirect("CustomerList.aspx");
         }
         else
         {
@@ -60,7 +72,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     }
 
 
-    protected void Button1_Click(object sender, EventArgs e)
+    protected void btnFind_Click(object sender, EventArgs e)
     {
         //create an instance of class
         clsCustomer ACustomer = new clsCustomer();
