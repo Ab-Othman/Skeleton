@@ -119,5 +119,14 @@ namespace ClassLibrary
             }
 
         }
+        //function for the public validation method
+        public string Valid(string PhoneDescription,
+                            string PhoneColour,
+                            string DateReleased,)
+                             
+        //this function acccepts 5 parameters for validation
+        //the function returns a string containing and error message
+        //if no errors found then a blank string is returned
+
     }
 }

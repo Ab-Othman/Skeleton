@@ -7,6 +7,12 @@ namespace Testing1
     [TestClass]
     public class tstStock
     {
+        //good test data
+        //create some test data to pass to the method
+        string PhoneDescription = "Iphone 14";
+        string PhoneColour = "Black";
+        string DateReleased = DateTime.Now.Date.ToString();
+
         [TestMethod]
         public void TestMethod1()
         {
@@ -254,6 +260,20 @@ namespace Testing1
             //test to see if the result is true
             Assert.IsTrue(OK);
         }
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+            //string  variable to store any error message
+            String Error = "";
+            //invoke the method
+            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+
     }
 
 
