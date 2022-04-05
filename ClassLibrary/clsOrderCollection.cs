@@ -79,7 +79,7 @@ namespace ClassLibrary
             }
         }
 
-        public int Add()
+        public void Add()
         {
             //adds a new record to the database based on the values of thisOrder
             //connect to database
@@ -94,6 +94,21 @@ namespace ClassLibrary
             //execute the stored procedure, returns the primary key value
             DB.Execute("sproc_tblOrder_Update");
 
+        }
+
+        public void Update()
+        {
+            //update an exisiting record based on values of ThisOrder
+            //connect to database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@OrderNo", mThisOrder.OrderNo);
+            DB.AddParameter("@CustomerUserId", mThisOrder.CustomerUserId);
+            DB.AddParameter("@OrderDate", mThisOrder.OrderDate);
+            DB.AddParameter("@PaymentMethod", mThisOrder.PaymentMethod);
+            DB.AddParameter("@OrderStatus", mThisOrder.OrderStatus);
+            DB.AddParameter("@ShippingAddress", mThisOrder.ShippingAddress);
+            DB.AddParameter("@PaymentReceived", mThisOrder.PaymentReceived);
         }
     }
 }
