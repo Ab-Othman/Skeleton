@@ -92,7 +92,7 @@ namespace ClassLibrary
             DB.AddParameter("@ShippingAddress", mThisOrder.ShippingAddress);
             DB.AddParameter("@PaymentReceived", mThisOrder.PaymentReceived);
             //execute the stored procedure, returns the primary key value
-            return DB.Execute("sproc_tblOrder_Update");
+            return DB.Execute("sproc_tblOrder_Insert");
 
         }
 
@@ -109,6 +109,19 @@ namespace ClassLibrary
             DB.AddParameter("@OrderStatus", mThisOrder.OrderStatus);
             DB.AddParameter("@ShippingAddress", mThisOrder.ShippingAddress);
             DB.AddParameter("@PaymentReceived", mThisOrder.PaymentReceived);
+            //execute the stored procedure
+            DB.Execute("sproc_tblOrder_Update");
+        }
+
+        public void Delete()
+        {
+            //deletes the record pointed to by thisOrder
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@OrderNo", mThisOrder.OrderNo);
+            //execute the stored procedure
+            DB.Execute("sproc_tblOrder_Delete");
         }
     }
 }
