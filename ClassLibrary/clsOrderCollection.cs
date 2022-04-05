@@ -8,7 +8,7 @@ namespace ClassLibrary
         //private data member for the list
         List<clsOrder> mOrderList = new List<clsOrder>();
         //private data member thisOrder
-        private clsOrder mThisOrder = new clsOrder();
+        clsOrder mThisOrder = new clsOrder();
 
         public clsOrderCollection()
         {
@@ -79,7 +79,7 @@ namespace ClassLibrary
             }
         }
 
-        public void Add()
+        public int Add()
         {
             //adds a new record to the database based on the values of thisOrder
             //connect to database
@@ -92,7 +92,7 @@ namespace ClassLibrary
             DB.AddParameter("@ShippingAddress", mThisOrder.ShippingAddress);
             DB.AddParameter("@PaymentReceived", mThisOrder.PaymentReceived);
             //execute the stored procedure, returns the primary key value
-            DB.Execute("sproc_tblOrder_Update");
+            return DB.Execute("sproc_tblOrder_Update");
 
         }
 
