@@ -16,7 +16,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if (IsPostBack == false)
         {
             //if this is not a new record
-            if (SupplierID != -1)
+            if (SupplierID != -1 && SupplierID != 0)
             {
                 //display current data for the record
                 DisplaySuppliers();
@@ -24,19 +24,19 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
     }
 
-    private void DisplaySuppliers()
+     void DisplaySuppliers()
     {
         //create an instance of supplier book
         clsSupplierCollection SupplierBook = new clsSupplierCollection();
         //find record to update
         SupplierBook.ThisSupplier.Find(SupplierID);
         txtSupplierID.Text = SupplierBook.ThisSupplier.SupplierID.ToString();
+        txtSupplierName.Text = SupplierBook.ThisSupplier.SupplierName.ToString();
         txtPhoneNumber.Text = SupplierBook.ThisSupplier.PhoneNumber.ToString();
         txtEmail.Text = SupplierBook.ThisSupplier.Email.ToString();
         txtShippingFromAddress.Text = SupplierBook.ThisSupplier.ShippingFromAddress.ToString();
-        txtSupplierName.Text = SupplierBook.ThisSupplier.SupplierName.ToString();
-        chkActive.Checked = SupplierBook.ThisSupplier.Active;
         txtDateAdded.Text = SupplierBook.ThisSupplier.DateAdded.ToString();
+        chkActive.Checked = SupplierBook.ThisSupplier.Active;
 
     }
 
@@ -62,16 +62,25 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
             //capture supplierid
             ASupplier.SupplierID = SupplierID;
-            //capture the supplier name
-            ASupplier.SupplierName = SupplierName;
+
             //capture the phone number
             ASupplier.PhoneNumber = PhoneNumber;
+
             //capture email
             ASupplier.Email = Email;
-            //capture shipping from address
-            ASupplier.ShippingFromAddress = ShippingFromAddress;
+
             //capture date
             ASupplier.DateAdded = Convert.ToDateTime(DateAdded);
+
+            //capture shipping from address
+            ASupplier.ShippingFromAddress = ShippingFromAddress;
+
+            //capture the supplier name
+            ASupplier.SupplierName = SupplierName;
+
+
+
+
             //capture active
             ASupplier.Active = chkActive.Checked;
             //create a new instance of the address collection

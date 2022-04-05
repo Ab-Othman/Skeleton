@@ -17,7 +17,7 @@ public partial class _1_List : System.Web.UI.Page
             if (IsPostBack == false)
             {
                 //if this is not a new record
-                if (SupplierID != -1)
+                if (SupplierID != -1 && SupplierID != 0)
                 {
                     //display current data for the record
                     DisplaySuppliers();
@@ -66,6 +66,26 @@ public partial class _1_List : System.Web.UI.Page
         else //if no record selected
         {
             lblError.Text = "Please select a record from the list";
+        }
+    }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        //var to store the primary key value  of the record to be edited
+        Int32 SupplierID;
+        //if a record has been selected from the list
+        if (lstSupplierList.SelectedIndex != 1)
+        {
+            //get primary key of the record to edit
+            SupplierID = Convert.ToInt32(lstSupplierList.SelectedValue);
+            //store data in session object
+            Session["SupplierID"] = SupplierID;
+            //redirect to delete page
+            Response.Redirect("SupplierConfirmDelete.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record to delete from list";
         }
     }
 }

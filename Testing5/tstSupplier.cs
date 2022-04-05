@@ -127,7 +127,7 @@ namespace Testing2
             //boolean variable to store the results of validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 SupplierID = 3;
+            Int32 SupplierID = 4;
             //invoke the method
             Found = ASupplier.Find(SupplierID);
             //test to see if the result is true
@@ -144,11 +144,11 @@ namespace Testing2
             //boolean variable to record if data is ok
             Boolean OK = true;
             //create test data
-            Int32 SupplierID = 3;
+            Int32 SupplierID = 4;
             //invoke the method
             Found = ASupplier.Find(SupplierID);
             //check the supplier ID
-            if (ASupplier.SupplierID != 3)
+            if (ASupplier.SupplierID != 4)
             {
                 OK = false;
             }
@@ -166,7 +166,7 @@ namespace Testing2
             //boolean variable to record if data is ok
             Boolean OK = true;
             //create some tests data to use in method
-            Int32 SupplierID = 3;
+            Int32 SupplierID = 4;
             //invoke the method
             Found = ASupplier.Find(SupplierID);
             //check property
@@ -188,7 +188,7 @@ namespace Testing2
             //boolean variable to record if data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 SupplierID = 3;
+            Int32 SupplierID = 4;
             //invoke the method
             Found = ASupplier.Find(SupplierID);
             //check the property
@@ -210,7 +210,7 @@ namespace Testing2
             //boolean variable to record if data is ok
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 SupplierID = 3;
+            Int32 SupplierID = 4;
             //invoke the method
             Found = ASupplier.Find(SupplierID);
             //check the property
@@ -232,7 +232,7 @@ namespace Testing2
             //boolean variable to record if data is ok
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 SupplierID = 3;
+            Int32 SupplierID = 4;
             //invoke the method
             Found = ASupplier.Find(SupplierID);
             //check the property
@@ -254,7 +254,7 @@ namespace Testing2
             //boolean variable to record if data is ok
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 SupplierID = 3;
+            Int32 SupplierID = 4;
             //invoke the method
             Found = ASupplier.Find(SupplierID);
             //check the property
@@ -276,7 +276,7 @@ namespace Testing2
             //boolean variable to record if data is ok
             Boolean OK = true;
             //create some test data to use with method
-            Int32 SupplierID = 3;
+            Int32 SupplierID = 4;
             //invoke the method
             Found = ASupplier.Find(SupplierID);
             //check the property
