@@ -7,14 +7,11 @@ namespace ClassLibrary
     {
         //private data member for the list
         List<clsOrder> mOrderList = new List<clsOrder>();
-        private clsOrder mThisOrder;
+        //private data member thisOrder
+        private clsOrder mThisOrder = new clsOrder();
 
         public clsOrderCollection()
         {
-            //private data member for list
-            List<clsOrder> mOrderList = new List<clsOrder>();
-            //private data member thisOrder
-            clsOrder mThisOrder = new clsOrder();
             //var for the index
             Int32 Index = 0;
             //var to store the record count
@@ -80,6 +77,23 @@ namespace ClassLibrary
             {
                 //for later
             }
+        }
+
+        public int Add()
+        {
+            //adds a new record to the database based on the values of thisOrder
+            //connect to database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parametersfor the stored procedure
+            DB.AddParameter("@CustomerUserId", mThisOrder.CustomerUserId);
+            DB.AddParameter("@OrderDate", mThisOrder.OrderDate);
+            DB.AddParameter("@PaymentMethod", mThisOrder.PaymentMethod);
+            DB.AddParameter("@OrderStatus", mThisOrder.OrderStatus);
+            DB.AddParameter("@ShippingAddress", mThisOrder.ShippingAddress);
+            DB.AddParameter("@PaymentReceived", mThisOrder.PaymentReceived);
+            //execute the stored procedure, returns the primary key value
+            DB.Execute("sproc_tblOrder_Update");
+
         }
     }
 }

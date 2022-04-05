@@ -32,18 +32,23 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnOrder.Valid(OrderDate, ShippingAddress, PaymentMethod, OrderStatus);
         if (Error == "")
         {
+            //capture order details
             AnOrder.OrderNo = int.Parse(OrderNo);
             AnOrder.CustomerUserId = int.Parse(CustomerUserId);
             AnOrder.OrderDate = Convert.ToDateTime(OrderDate);
             AnOrder.ShippingAddress = ShippingAddress;
             AnOrder.PaymentMethod = PaymentMethod;
-            AnOrder.PaymentReceived = PaymentReceived;
+            AnOrder.PaymentReceived = chkPaymentReceived.Checked;
             AnOrder.OrderStatus = OrderStatus;
 
-            //store order in session object
-            Session["AnOrder"] = AnOrder;
-            //redirect to the viewer page
-            Response.Write("AddressViewer.aspx");
+            //create a new instance of the order collection
+            clsOrderCollection OrderList = new clsOrderCollection();
+            //set the ThisOrder property
+            OrderList.ThisOrder = AnOrder;
+            //add the new record
+            OrderList.Add();
+            //redirect back to listpage
+            Response.Redirect("OrderList.aspx");
         } 
         else
         {
