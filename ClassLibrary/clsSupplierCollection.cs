@@ -31,13 +31,14 @@ namespace ClassLibrary
                 //create a blank address
                 clsSupplier ASupplier = new clsSupplier();
                 //read in fields from current record
-                ASupplier.Active = Convert.ToBoolean(DB.DataTable.Rows[Index]["Active"]);
+                
                 ASupplier.SupplierID = Convert.ToInt32(DB.DataTable.Rows[Index]["Supplierid"]);
                 ASupplier.SupplierName = Convert.ToString(DB.DataTable.Rows[Index]["SupplierName"]);
                 ASupplier.ShippingFromAddress = Convert.ToString(DB.DataTable.Rows[Index]["ShippingFromAddress"]);
                 ASupplier.Email = Convert.ToString(DB.DataTable.Rows[Index]["Email"]);
                 ASupplier.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateAdded"]);
                 ASupplier.PhoneNumber = Convert.ToString(DB.DataTable.Rows[Index]["PhoneNumber"]);
+                ASupplier.Active = Convert.ToBoolean(DB.DataTable.Rows[Index]["Active"]);
                 //add record to the private data member 
                 mSupplierList.Add(ASupplier);
                 //point at the next record
@@ -142,6 +143,17 @@ namespace ClassLibrary
             DB.AddParameter("@Active", mThisSupplier.Active);
             //execute the stored procedure
             DB.Execute("sproc_tblSupplier_Update");
+        }
+
+        public void Delete()
+        {
+            //deletes the record pointed to by thisSupplier
+            //connect to database
+            clsDataConnection DB = new clsDataConnection();
+            //set parameteres for stored procedure
+            DB.AddParameter("@SupplierID", mThisSupplier.SupplierID);
+            //execute stored procedure
+            DB.Execute("sproc_tblSupplier_Delete");
         }
     }
       
