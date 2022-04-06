@@ -173,7 +173,7 @@ namespace Testing4
             //var to store primary key
             Int32 PrimaryKey = 0;
             //set its property 
-            TestItem.OrderNo = 1
+            TestItem.OrderNo = 1;
             TestItem.PaymentReceived = true;
             TestItem.CustomerUserId = 1;
             TestItem.ShippingAddress = "123 house street";
@@ -187,13 +187,68 @@ namespace Testing4
             //set primary key to test data
             TestItem.OrderNo = PrimaryKey;
             //find the record
-            AllOrders.ThisOrder.Find(OrderNo);
+            AllOrders.ThisOrder.Find(PrimaryKey);
             //delete record
             AllOrders.Delete();
             //now find the record
             Boolean Found = AllOrders.ThisOrder.Find(PrimaryKey);
             //test to see that the record was not found
             Assert.IsFalse(Found);
+        }
+
+        [TestMethod]
+        public void ReportByOrderStatusMethodOk()
+        {
+            //create instance of the class containing unflitered results
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            //create an instance of the filtered data
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            //apply a blank string (should return all records)
+            FilteredOrders.ReportByOrderStatus("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllOrders.Count, FilteredOrders.Count);
+        }
+
+        [TestMethod]
+        public void ReportByOrderStatusNoneFound()
+        {
+            //create an instance of the filtered data
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            //apply a order status that doesnt exist
+            FilteredOrders.ReportByOrderStatus("xxxxxx");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredOrders.Count);
+        }
+
+        [TestMethod]
+        public void ReportByOrderStatusTestDataFound()
+        {
+            //create an instance of the filtered data
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            //var to store outcome
+            Boolean OK = true;
+            //apply an order status that doesnt exist
+            FilteredOrders.ReportByOrderStatus("yyyyyy");
+            //check that the correct number of records are found 
+            if (FilteredOrders.Count == 2)
+            {
+                //check that the first record ID 1002
+                if (FilteredOrders.OrderList[0].OrderNo != 1002)
+                {
+                    OK = false;
+                }
+                //check that the first record is ID 1003
+                if (FilteredOrders.OrderList[1].OrderNo != 1003)
+                {
+                    OK = false;
+                }
+            } 
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
         }
     }
 }
