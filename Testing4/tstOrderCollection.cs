@@ -173,7 +173,7 @@ namespace Testing4
             //var to store primary key
             Int32 PrimaryKey = 0;
             //set its property 
-            TestItem.OrderNo = 1
+            TestItem.OrderNo = 1;
             TestItem.PaymentReceived = true;
             TestItem.CustomerUserId = 1;
             TestItem.ShippingAddress = "123 house street";
@@ -187,7 +187,7 @@ namespace Testing4
             //set primary key to test data
             TestItem.OrderNo = PrimaryKey;
             //find the record
-            AllOrders.ThisOrder.Find(OrderNo);
+            AllOrders.ThisOrder.Find(PrimaryKey);
             //delete record
             AllOrders.Delete();
             //now find the record
