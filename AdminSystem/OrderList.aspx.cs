@@ -27,7 +27,7 @@ public partial class _1_List : System.Web.UI.Page
         //set name of primary key
         lstOrderList.DataValueField = "OrderNo";
         //set data field to display
-        lstOrderList.DataTextField = "OrderDate";
+        lstOrderList.DataTextField = "ListBoxData";
         //bind data to the list
         lstOrderList.DataBind();
     }
@@ -108,7 +108,7 @@ public partial class _1_List : System.Web.UI.Page
         //set the name of the primary key
         lstOrderList.DataValueField = "OrderNo";
         //set the name of the field to display
-        lstOrderList.DataTextField = "OrderStatus";
+        lstOrderList.DataTextField = "ListBoxData";
         //bind that data to the list
         lstOrderList.DataBind();
     }

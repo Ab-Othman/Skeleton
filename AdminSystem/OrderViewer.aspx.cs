@@ -15,7 +15,19 @@ public partial class _1Viewer : System.Web.UI.Page
         //get data from the session object
         AnOrder = (clsOrder)Session["AnOrder"];
         //display the user id on the page
+        Response.Write(AnOrder.OrderNo);
+
         Response.Write(AnOrder.CustomerUserId);
+
+        Response.Write(AnOrder.OrderDate);
+
+        Response.Write(AnOrder.ShippingAddress += "<br/>");
+
+        Response.Write(AnOrder.PaymentMethod += "<br/>");
+
+        Response.Write(AnOrder.PaymentReceived);
+
+        Response.Write(AnOrder.OrderStatus += "<br/>");
 
     }
 }
