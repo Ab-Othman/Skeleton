@@ -90,6 +90,14 @@ namespace ClassLibrary
             }
         }
 
+        public String ListBoxData
+        {
+            get
+            {
+                return mOrderNo + " | " + mOrderDate + " | " + mOrderStatus;
+            }
+        }
+
         public bool Find(int OrderNo)
         {
             /* 
