@@ -171,7 +171,7 @@ namespace Testing5
             Int32 PrimaryKey = 1;
             //set its property 
             TestItem.Active = true;
-            TestItem.SupplierID = 3;
+            TestItem.SupplierID = 4;
             TestItem.SupplierName = "huawei";
             TestItem.Email = "huawei@huawei.co.uk";
             TestItem.ShippingFromAddress = "China";
@@ -191,6 +191,63 @@ namespace Testing5
             Boolean Found = AllSuppliers.ThisSupplier.Find(PrimaryKey);
             //test to see record was not found
             Assert.IsFalse(Found);
+        }
+
+        [TestMethod]
+        public void ReportBySupplierNameMethodOK()
+        {
+            //create an instance of the class containing unfiltered results 
+            clsSupplierCollection AllSuppliers = new clsSupplierCollection();
+            //create an instance of the filtered data
+            clsSupplierCollection FilteredSuppliers = new clsSupplierCollection();
+            //apply a blank string (should return all records)
+            FilteredSuppliers.ReportBySupplierName("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllSuppliers.Count, FilteredSuppliers.Count);
+        }
+
+        [TestMethod]
+        public void ReportBySupplierNameNoneFound()
+        {
+            //create an instance of filtered data
+            clsSupplierCollection FilteredSuppliers = new clsSupplierCollection();
+            //apply a supplier name that doesn't exist
+            FilteredSuppliers.ReportBySupplierName("Orange");
+            //test to see that there are no records 
+            Assert.AreEqual(0, FilteredSuppliers.Count);
+        }
+
+        [TestMethod]
+        public void ReportBySupplierNameTestDataFound()
+        {
+            //create an instance of the filtered data
+            clsSupplierCollection FilteredSuppliers = new clsSupplierCollection();
+            //var to store outcome
+            Boolean OK = true;
+            //apply a supplier name that doesn't exist
+            FilteredSuppliers.ReportBySupplierName("Orange");
+            //check that the correct number of records are found
+            if (FilteredSuppliers.Count == 2)
+            {
+                //check that the first record is id 5
+                if(FilteredSuppliers.SupplierList[0].SupplierID != 5)
+                {
+                    OK = false;
+                }
+
+                //check that the second record is ID 6
+                if(FilteredSuppliers.SupplierList[1].SupplierID != 6)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+
+            //test to see that there are no records
+            Assert.IsTrue(OK);
         }
     }
 }
