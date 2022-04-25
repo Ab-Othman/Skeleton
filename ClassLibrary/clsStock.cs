@@ -119,14 +119,66 @@ namespace ClassLibrary
             }
 
         }
-        //function for the public validation method
-        public string Valid(string PhoneDescription,
-                            string PhoneColour,
-                            string DateReleased,)
-                             
-        //this function acccepts 5 parameters for validation
-        //the function returns a string containing and error message
-        //if no errors found then a blank string is returned
+
+        public string Valid(string phoneDescription, string phoneColour, string dateReleased, string price)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //create a temporary variable to store date values
+            DateTime DateTemp;
+            //if the PhoneDescription is blank
+            if (phoneDescription.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Phone Description may not be blank : ";
+            }
+            //if the phone descrption is greater than 20 characters
+            if(phoneDescription.Length > 20)
+            {
+                //record the error
+                Error = Error + "The Phone Description must be less than 20 characters : ";
+            }
+            //is the PhoneColour blank
+            if(phoneColour.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Phone Colour may not be blank : ";
+            }
+            //if the PhoneColour is too long
+            if(phoneColour.Length > 20)
+            {
+                //record the error
+                Error = Error + "The Phone Colour must be less than 20 characters : ";
+            }
+            try
+            {
+                //copy the dateReleased value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(dateReleased);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //check to see if the date is greater than today's date 
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+            //return any error messages
+            return Error;
+        }
+
+        
+
+
+
 
     }
 }
