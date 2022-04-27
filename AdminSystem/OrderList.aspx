@@ -13,8 +13,8 @@
         <asp:ListBox ID="lstOrderList" runat="server" Height="442px" Width="997px"></asp:ListBox>
         <p style="width: 156px">
             <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />
-            <asp:Button ID="btnEdit" runat="server" OnClick="btnAdd_Click" Text="Edit" />
-            <asp:Button ID="btnDelete" runat="server" Text="Delete" />
+            <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit" />
+            <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" />
         </p>
         <p style="width: 141px">
             Enter an order status:<asp:TextBox ID="txtFilter" runat="server" MaxLength="20" Width="123px"></asp:TextBox>
