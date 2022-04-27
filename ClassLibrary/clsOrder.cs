@@ -100,20 +100,6 @@ namespace ClassLibrary
 
         public bool Find(int OrderNo)
         {
-            /* 
-             * Old Code
-             * 
-            //set the private data members to the test data value
-            mOrderNo = 21;
-            mCustomerUserId = 1;
-            mOrderDate = Convert.ToDateTime("15/08/2000");
-            mShippingAddress = "123 House";
-            mPaymentMethod = "Card";
-            mPaymentReceived = true;
-            mOrderStatus = "Processed";
-            //always return true
-            return true;
-            */
 
             //create instance of the data connection
             clsDataConnection DB = new clsDataConnection();
