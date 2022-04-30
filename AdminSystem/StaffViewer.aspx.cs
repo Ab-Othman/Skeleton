@@ -16,8 +16,9 @@ public partial class _1Viewer : System.Web.UI.Page
         AnStaff = (clsStaff)Session["AnStaff"];
         //display the StaffId for this entry
         Response.Write(AnStaff.StaffFirstName);
-
-
+        Response.Write(AnStaff.StaffLastName);
+        Response.Write(AnStaff.StaffId);
+        Response.Write(AnStaff.StaffEmail);
     }
 
 }
