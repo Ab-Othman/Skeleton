@@ -17,11 +17,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of clsStaff
         clsStaff AnStaff = new clsStaff();
+
         //capture the StaffFirstName
         AnStaff.StaffFirstName = txtStaffFirstName.Text;
+        AnStaff.StaffLastName = txtStaffLastName.Text;
+        AnStaff.StaffEmail = txtStaffEmail.Text;
         //store the StaffFirstName in the session object
         Session["AnStaff"] = AnStaff;
         //navigate to the viewer page
         Response.Redirect("StaffViewer.aspx");
+
+        txtStaffPhoneNumber.Text = AnStaff.StaffPhoneNumber.ToString();
+
     }
 }
