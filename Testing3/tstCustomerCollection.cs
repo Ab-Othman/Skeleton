@@ -233,5 +233,66 @@ namespace Test_Framework
 
             Assert.IsFalse(Found);
         }
+
+        [TestMethod]
+        public void ReportByCustomerFullNameMethodOK()
+        {
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+
+            //create an instanceof the filtered data
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+
+            //apply a blank string (Should return all records);
+            FilteredCustomers.ReportByCustomerFullName("");
+
+            //test to see that the two values are the same
+            Assert.AreEqual(AllCustomers.Count, FilteredCustomers.Count);
+        }
+
+        [TestMethod]
+        public void ReportByCustomerFullNameNoneFound()
+        {
+            //create an instance of the filtered data
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+
+            //apply a Customer full name that doesn't exist
+            FilteredCustomers.ReportByCustomerFullName("wwwwwww");
+
+            //test to see that there are no records 
+            Assert.AreEqual(0, FilteredCustomers.Count);
+        }
+
+        [TestMethod]
+        public void ReportByCustomerFullNameTestDataFound()
+        {
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+
+            //var to store outcome
+            Boolean OK = true;
+
+            //apply a post code that doesn't exist
+            FilteredCustomers.ReportByCustomerFullName("Ohm Pawat");
+
+            //check that the correct number of records are founf
+            if(FilteredCustomers.Count == 2)
+            {
+
+                //check that the first record is ID 36
+                if(FilteredCustomers.CustomerList[0].CustomerUserId != 66)
+                {
+                    OK = false;
+                }
+                //check that the first rec ord is ID 37
+                if (FilteredCustomers.CustomerList[1].CustomerUserId != 67)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
     }
 }
