@@ -7,25 +7,15 @@ using System.Web.UI.WebControls;
 using ClassLibrary;
 
 public partial class _1_List : System.Web.UI.Page
-{
-    
-    Int32 CustomerUserId;
+{   
     protected void Page_Load(object sender, EventArgs e)
-    {
-
-        CustomerUserId = Convert.ToInt32(Session["CustomerUserId"]);
+    {       
         //if this is the first time the page is displayed
         if (IsPostBack == false)
-        {
-            if(CustomerUserId != -1)
-            {
-                //update the list box
-                DisplayCustomers();
-            }
-            
+        {            
+            //update the list box
+            DisplayCustomers();                       
         }
-
-
     }
     
 
@@ -77,10 +67,28 @@ public partial class _1_List : System.Web.UI.Page
         {
             lblError.Text = "please select a record to edit from the list";
         }
-    }
+    }    
 
-    protected void btnDelete_Click(object sender, EventArgs e)
+    protected void btnDelete_Click1(object sender, EventArgs e)
     {
-       
+        Int32 CustomerUserId;
+
+        //if record has been selected from the list
+        if (lstCustomerList.SelectedIndex != -1)
+        {
+            //get the primary key value of the record to edit
+            CustomerUserId = Convert.ToInt32(lstCustomerList.SelectedValue);
+
+            //store the data in the session object
+            Session["CustomerUserId"] = CustomerUserId;
+
+            //redirect to the delete page 
+            Response.Redirect("CustomerConfirmDelete.aspx");
+
+        }
+        else //if no record has been selected
+        {
+            lblError.Text = "Pleasse select a record to delete from the list";
+        }
     }
 }
