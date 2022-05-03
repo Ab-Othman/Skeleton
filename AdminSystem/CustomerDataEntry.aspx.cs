@@ -8,11 +8,39 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    
+    Int32 CustomerUserId;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        CustomerUserId = Convert.ToInt32(Session["CustomerUserId"]);
+        if(IsPostBack == false)
+        {
+            //if this is not a new record
+            if(CustomerUserId != -1)
+            {
+                //display the current data for the record 
+                DisplayCustomers();
+            }
+        }
     }
 
+    private void DisplayCustomers()
+    {
+        clsCustomerCollection CustomerBook = new clsCustomerCollection();
+
+        //find the record to update
+        CustomerBook.ThisCustomer.Find(CustomerUserId);
+
+        //display the data for this record
+        txtCustomerUserId.Text = CustomerBook.ThisCustomer.CustomerUserId.ToString();
+        txtCustomerFullName.Text = CustomerBook.ThisCustomer.CustomerFullName;
+        txtCustomerPhoneNumber.Text = CustomerBook.ThisCustomer.CustomerPhoneNumber;
+        txtCustomerEmailId.Text = CustomerBook.ThisCustomer.CustomerEmailId;
+        txtCustomerAccountCreated.Text = CustomerBook.ThisCustomer.CustomerAccountCreated.ToString();
+        txtCustomerAddress.Text = CustomerBook.ThisCustomer.CustomerAddress;
+        chkSubscribedToReceiveMail.Checked = CustomerBook.ThisCustomer.SubscribedToReceiveMail;
+    }
+    
     protected void btnOK_Click(Object sender, EventArgs e)
     {
         //create an instance of a clsCustomer
@@ -34,6 +62,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerEmailId, CustomerAccountCreated, CustomerAddress);
         if (Error == "")
         {
+            ACustomer.CustomerUserId = CustomerUserId;
+
             ACustomer.CustomerFullName = CustomerFullName;
 
             //capture customer phone number
@@ -48,20 +78,34 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //capture customer address
             ACustomer.CustomerAddress = CustomerAddress;
 
-
             //adding new code here, last week's code
             ACustomer.SubscribedToReceiveMail = chkSubscribedToReceiveMail.Checked;
 
             //create a new instamce of the customer collection
             clsCustomerCollection CustomerList = new clsCustomerCollection();
 
-            //set the ThisCustomer property
-            CustomerList.ThisCustomer = ACustomer;
+            //if this is a new record i.e. CustomeruserId = -1 then add the data
+            if(CustomerUserId == -1)
+            {
+                //set the thiscustomer property
+                CustomerList.ThisCustomer = ACustomer;
 
-            //add the new record
-            CustomerList.Add();
+                //add the new record
+                CustomerList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                CustomerList.ThisCustomer.Find(CustomerUserId);
 
-            //redirect to the listpage
+                //set the thiscustomer property
+                CustomerList.ThisCustomer = ACustomer;
+
+                //update the record
+                CustomerList.Update();
+            }
+            //redirect back to the list page 
             Response.Redirect("CustomerList.aspx");
         }
         else
@@ -80,6 +124,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Int32 CustomerUserId;
 
         Boolean Found = false;
+
         CustomerUserId = Convert.ToInt32(txtCustomerUserId.Text);
 
         Found = ACustomer.Find(CustomerUserId);
@@ -92,10 +137,5 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtCustomerAddress.Text = ACustomer.CustomerAddress;
             
         }
-    }
-
-    protected void btnCancel_Click(object sender, EventArgs e)
-    {
-
     }
 }
