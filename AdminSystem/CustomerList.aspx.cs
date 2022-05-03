@@ -8,17 +8,26 @@ using ClassLibrary;
 
 public partial class _1_List : System.Web.UI.Page
 {
+    
+    Int32 CustomerUserId;
     protected void Page_Load(object sender, EventArgs e)
     {
+
+        CustomerUserId = Convert.ToInt32(Session["CustomerUserId"]);
         //if this is the first time the page is displayed
         if (IsPostBack == false)
         {
-            //update the list box
-            DisplayCustomers();
+            if(CustomerUserId != -1)
+            {
+                //update the list box
+                DisplayCustomers();
+            }
+            
         }
 
 
     }
+    
 
     void DisplayCustomers()
     {
@@ -36,6 +45,7 @@ public partial class _1_List : System.Web.UI.Page
         //bind the data to the list
         lstCustomerList.DataBind();
     }
+    
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
@@ -46,4 +56,31 @@ public partial class _1_List : System.Web.UI.Page
         Response.Redirect("CustomerDataEntry.aspx");
     }
 
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        //var to store the primary key value of the record to be edited
+        Int32 CustomerUserId;
+
+        //if the record has been selected from the list
+        if(lstCustomerList.SelectedIndex != -1)
+        {
+            //get the primary key value of the record to edit
+            CustomerUserId = Convert.ToInt32(lstCustomerList.SelectedValue);
+
+            //store the data in the session object
+            Session["CustomerUserId"] = CustomerUserId;
+
+            //redirect to the edit page
+            Response.Redirect("CustomerDataEntry.aspx");
+        } else
+        {
+            lblError.Text = "please select a record to edit from the list";
+        }
+    }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+       
+    }
 }
