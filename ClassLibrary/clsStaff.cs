@@ -134,17 +134,25 @@ namespace ClassLibrary
 
         public bool Find(int StaffId)
         {
-            //set the private data members to the test data values
-            mStaffId = 21;
-            mStaffFirstName = "James";
-            mStaffLastName = "Barclays";
-            mStaffEmail = "Harry@gmail.com";
-            mStaffPhoneNumber = 0748056575;
-            mStaffWeeklyContractedHours = 34;
-            mManagement = true;
-
-            // return true
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@StaffId", StaffId);
+            DB.Execute("sproc_tblStaff_FilterByStaffId");
+            if (DB.Count == 1)
+            {
+                mStaffId = Convert.ToInt32(DB.DataTable.Rows[0]["StaffId"]);
+                mStaffFirstName = Convert.ToString(DB.DataTable.Rows[0]["StaffFirstName"]);
+                mStaffLastName = Convert.ToString(DB.DataTable.Rows[0]["StaffLastName"]);
+                mStaffEmail = Convert.ToString(DB.DataTable.Rows[0]["StaffEmail"]);
+                mStaffPhoneNumber = Convert.ToInt32(DB.DataTable.Rows[0]["StaffPhoneNumber"]);
+                mStaffWeeklyContractedHours = Convert.ToInt32(DB.DataTable.Rows[0]["StaffWeeklyContractedHours"]);
+                mManagement = Convert.ToBoolean(DB.DataTable.Rows[0]["Management"]);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+       
         }
     }
 }
