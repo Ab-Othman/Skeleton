@@ -32,4 +32,21 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
 
     }
+
+    protected void Find_Click(object sender, EventArgs e)
+    {
+        clsStaff AnStaff = new clsStaff();
+        Int32 StaffId;
+        Boolean Found = false;
+        StaffId = Convert.ToInt32(txtStaffId.Text);
+        Found = AnStaff.Find(StaffId);
+        if (Found == true)
+        {
+            txtStaffFirstName.Text = AnStaff.StaffFirstName;
+            txtStaffLastName.Text = AnStaff.StaffLastName;
+            txtStaffEmail.Text = AnStaff.StaffEmail;
+            txtStaffPhoneNumber.Text = AnStaff.StaffPhoneNumber.ToString();
+            txtStaffWeeklyContractedHours.Text = AnStaff.StaffWeeklyContractedHours.ToString();
+        }
+    }
 }

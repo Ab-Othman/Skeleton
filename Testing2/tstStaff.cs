@@ -115,7 +115,7 @@ namespace Testing2
             clsStaff AnStaff = new clsStaff();
             //boolean variable to store the results of the validation  
             Boolean Found = false;
-            Int32 StaffId = 21;
+            Int32 StaffId = 2;
             //invoke the method
             Found = AnStaff.Find(StaffId);
             //test to see if teh results is true
@@ -132,7 +132,7 @@ namespace Testing2
             //boolean variable to record if teh data is ok 
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 Staffid = 21;
+            Int32 Staffid = 2;
             //invokes the method
             Found = AnStaff.Find(Staffid);
             //check to Staff ID
@@ -154,7 +154,7 @@ namespace Testing2
             //boolean variable to record if teh data is ok 
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 Staffid = 21;
+            Int32 Staffid = 2;
             //invokes the method
             Found = AnStaff.Find(Staffid);
             //check to Staff ID
@@ -176,7 +176,7 @@ namespace Testing2
             //boolean variable to record if teh data is ok 
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 Staffid = 21;
+            Int32 Staffid = 2;
             //invokes the method
             Found = AnStaff.Find(Staffid);
             //check to Staff ID
@@ -198,11 +198,11 @@ namespace Testing2
             //boolean variable to record if teh data is ok 
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 Staffid = 21;
+            Int32 Staffid = 2;
             //invokes the method
             Found = AnStaff.Find(Staffid);
             //check to Staff ID
-            if (AnStaff.StaffEmail != "harry@gmail.com")
+            if (AnStaff.StaffEmail != "Casey@gmail.com")
             {
                 OK = false;
             }
@@ -220,11 +220,11 @@ namespace Testing2
             //boolean variable to record if teh data is ok 
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 Staffid = 21;
+            Int32 Staffid = 2;
             //invokes the method
             Found = AnStaff.Find(Staffid);
             //check to Staff ID
-            if (AnStaff.StaffPhoneNumber != 0748056575)
+            if (AnStaff.StaffPhoneNumber != 988872873)
             {
                 OK = false;
             }
@@ -243,11 +243,11 @@ namespace Testing2
             //boolean variable to record if teh data is ok 
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 Staffid = 21;
+            Int32 Staffid = 2;
             //invokes the method
             Found = AnStaff.Find(Staffid);
             //check to Staff ID
-            if (AnStaff.StaffWeeklyContractedHours != 34)
+            if (AnStaff.StaffWeeklyContractedHours != 25)
             {
                 OK = false;
             }
@@ -266,7 +266,7 @@ namespace Testing2
             //boolean variable to record if teh data is ok 
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 Staffid = 21;
+            Int32 Staffid = 1;
             //invokes the method
             Found = AnStaff.Find(Staffid);
             //check to Staff ID
