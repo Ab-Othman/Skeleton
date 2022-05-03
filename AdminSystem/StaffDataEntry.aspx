@@ -33,11 +33,15 @@
             <asp:Label ID="lblStaffWeeklyContractedHours" runat="server" Height="20px" Text="Staff Weekly Contracted Hours" width="199px"></asp:Label>
             <asp:TextBox ID="txtStaffWeeklyContractedHours" runat="server" Height="16px" Width="200px"></asp:TextBox>
         </p>
-        <p>
-            <asp:CheckBox ID="chkManagement" runat="server" Text="Management" />
+        <p id="txtStaffStartDate">
+            <asp:Label ID="lblStaffStartDate" runat="server" Text="Start Date" width="199px"></asp:Label>
+            <asp:TextBox ID="txtStaffStartDate" runat="server" Height="18px" Width="203px"></asp:TextBox>
         </p>
         <p>
-            <asp:Label ID="lblError" runat="server"></asp:Label>
+            <asp:CheckBox ID="chkManagement" runat="server" Text="Management" width="199px" />
+        </p>
+        <p>
+            <asp:Label ID="lblError" runat="server" width="199px"></asp:Label>
         </p>
         <p>
             <asp:Button ID="btnOk" runat="server" OnClick="btnOk_Click" Text="OK" />

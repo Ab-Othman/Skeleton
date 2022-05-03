@@ -21,6 +21,7 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write(AnStaff.StaffEmail);
         Response.Write(AnStaff.StaffPhoneNumber);
         Response.Write(AnStaff.StaffWeeklyContractedHours);
+        Response.Write(AnStaff.StaffStartDate);
 
     }
 

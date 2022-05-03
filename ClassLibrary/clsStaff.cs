@@ -132,6 +132,24 @@ namespace ClassLibrary
         }
 
 
+        //staffid private member variable
+        private DateTime mStaffStartDate;
+        //StaffId public property
+        public DateTime StaffStartDate
+        {
+            get
+            {
+                //this line of code sends data out of the property 
+                return mStaffStartDate;
+            }
+            set
+            {
+                //this line of code allows data into the property
+                mStaffStartDate = value;
+            }
+        }
+
+
         public bool Find(int StaffId)
         {
             clsDataConnection DB = new clsDataConnection();
@@ -146,6 +164,7 @@ namespace ClassLibrary
                 mStaffPhoneNumber = Convert.ToInt32(DB.DataTable.Rows[0]["StaffPhoneNumber"]);
                 mStaffWeeklyContractedHours = Convert.ToInt32(DB.DataTable.Rows[0]["StaffWeeklyContractedHours"]);
                 mManagement = Convert.ToBoolean(DB.DataTable.Rows[0]["Management"]);
+                mStaffStartDate = Convert.ToDateTime(DB.DataTable.Rows[0]["StaffStartDate"]);
                 return true;
             }
             else

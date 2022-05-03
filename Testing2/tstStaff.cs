@@ -105,8 +105,22 @@ namespace Testing2
             AnStaff.StaffWeeklyContractedHours = TestData;
             //test to see if the two values are the same
             Assert.AreEqual(AnStaff.StaffWeeklyContractedHours, TestData);
-
         }
+
+
+        [TestMethod]
+        public void StaffStartDatePropertyOk()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //create some data
+            DateTime TestData = DateTime.Now.Date;
+            //assign the data to the property
+            AnStaff.StaffStartDate = TestData;
+            //test to see if the two values are the same
+            Assert.AreEqual(AnStaff.StaffStartDate, TestData);
+        }
+
 
         [TestMethod]
         public void FindMethodOK()
@@ -232,12 +246,12 @@ namespace Testing2
             Assert.IsTrue(OK);
         }
 
-
         [TestMethod]
         public void TestStaffWeeklyContractedHoursFound()
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
+
             //boolean variable to store the result of the search 
             Boolean Found = false;
             //boolean variable to record if teh data is ok 
@@ -277,6 +291,39 @@ namespace Testing2
             //test to see that results correct
             Assert.IsTrue(OK);
         }
-    }
+
+        [TestMethod]
+        public void TestStaffStartDateFound()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //boolean variable to store the result of the search 
+            Boolean Found = false;
+            //boolean variable to record if teh data is ok 
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 Staffid = 1;
+            //invokes the method
+            Found = AnStaff.Find(Staffid);
+            //check to Staff ID
+            if (AnStaff.StaffStartDate != Convert.ToDateTime(12/09/2000))
+            {
+                OK = false;
+            }
+            //test to see that results correct
+            Assert.IsTrue(OK);
+        }
+
+
+        // [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            Error = AnStaff.Valid(StaffFirstName, StaffLastName, StaffEmailPropertyOk, StaffPhoneNumber, StaffWeeklyContractedHours);
+            Assert.AreEqual(Error, "");
+        }
+        
 }
 

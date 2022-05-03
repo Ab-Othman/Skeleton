@@ -47,6 +47,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtStaffEmail.Text = AnStaff.StaffEmail;
             txtStaffPhoneNumber.Text = AnStaff.StaffPhoneNumber.ToString();
             txtStaffWeeklyContractedHours.Text = AnStaff.StaffWeeklyContractedHours.ToString();
+            txtStaffStartDate.Text = AnStaff.StaffStartDate.ToString();
         }
     }
 }
