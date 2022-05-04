@@ -19,18 +19,32 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsStaff AnStaff = new clsStaff();
 
         //capture the StaffFirstName
-        AnStaff.StaffId = Convert.ToInt32(txtStaffId.Text);
-        AnStaff.StaffFirstName = txtStaffFirstName.Text;
-        AnStaff.StaffLastName = txtStaffLastName.Text;
-        AnStaff.StaffEmail = txtStaffEmail.Text;
-        AnStaff. StaffPhoneNumber = Convert.ToInt32(txtStaffPhoneNumber.Text);
-        AnStaff. StaffWeeklyContractedHours = Convert.ToInt32(txtStaffPhoneNumber.Text);
-        //store the StaffFirstName in the session object
-        Session["AnStaff"] = AnStaff;
-        //navigate to the viewer page
-        Response.Redirect("StaffViewer.aspx");
-
-
+        string StaffId = txtStaffId.Text;
+        string StaffFirstName = txtStaffFirstName.Text;
+        string StaffLastName = txtStaffLastName.Text;
+        string StaffEmail = txtStaffEmail.Text;
+        string StaffPhoneNumber = txtStaffPhoneNumber.Text;
+        string StaffWeeklyContractedHours = txtStaffPhoneNumber.Text;
+        string StaffStartDate = txtStaffStartDate.Text;
+        string Error =  "";
+        Error = AnStaff.Valid(StaffFirstName, StaffLastName, StaffEmail, StaffPhoneNumber, StaffWeeklyContractedHours, StaffStartDate);
+        if (Error == "")
+        {
+            AnStaff.StaffId = Convert.ToInt32(StaffId);
+            AnStaff.StaffFirstName = StaffFirstName;
+            AnStaff.StaffLastName = StaffLastName;
+            AnStaff.StaffPhoneNumber = Convert.ToInt32(StaffPhoneNumber);
+            AnStaff.StaffWeeklyContractedHours = Convert.ToInt32(StaffWeeklyContractedHours);
+            AnStaff.StaffStartDate = Convert.ToDateTime(StaffStartDate);
+            //store the StaffFirstName in the session object
+            Session["AnStaff"] = AnStaff;
+            //navigate to the viewer page
+            Response.Redirect("StaffViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
     }
 
     protected void Find_Click(object sender, EventArgs e)
