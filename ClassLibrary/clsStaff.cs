@@ -171,7 +171,75 @@ namespace ClassLibrary
             {
                 return false;
             }
-       
+        }
+
+        public string Valid(string staffFirstName, string staffLastName, string staffEmail, string staffPhoneNumber, string staffWeeklyContractedHours,string staffStartDate)
+        {
+            String Error = "";
+            DateTime DateTemp;
+            if (staffFirstName.Length == 0)
+            {
+                Error = Error + "Staff First Name may not be blank: ";
+
+            }
+            if (staffFirstName.Length > 50)
+            {
+                Error = Error + "Staff First Name must be less than 50 characters: ";
+            }
+            try
+            {
+                DateTemp = Convert.ToDateTime(staffStartDate);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past: ";
+                }
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future: ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date was not a valid date: ";
+            }
+
+            if (staffLastName.Length == 0 )
+            {
+                Error = Error + "Staff Last Name cannot be blank: ";
+            }
+            if (staffLastName.Length>50)
+            {
+                Error = Error + "The Last name cannot be more than 50 characters: ";
+            }
+
+            if (staffEmail.Length == 0)
+            {
+                Error = Error + "Staff Phone number cannot be blank: ";
+            }
+            if (staffEmail.Length > 50)
+            {
+                Error = Error + "The Phone Number cannot be more than 50 characters: ";
+            }
+
+            if (staffPhoneNumber.Length == 0)
+            {
+                Error = Error + "Staff Phone Number cannot be blank: ";
+            }
+            if (staffPhoneNumber.Length > 9)
+            {
+                Error = Error + "The Last name cannot be more than 9 characters: ";
+            }
+
+
+            if (staffWeeklyContractedHours.Length == 0)
+            {
+                Error = Error + "Staff weekly contracted hours cannot be blank: ";
+            }
+            if (staffWeeklyContractedHours.Length > 169)
+            {
+                Error = Error + "The staff weekly contracted hours cannot be more than 168 hours: ";
+            }
+            return Error;
         }
     }
 }
