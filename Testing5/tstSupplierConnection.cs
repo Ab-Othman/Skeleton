@@ -225,7 +225,7 @@ namespace Testing5
             //var to store outcome
             Boolean OK = true;
             //apply a supplier name that doesn't exist
-            FilteredSuppliers.ReportBySupplierName("Orange");
+            FilteredSuppliers.ReportBySupplierName("o2");
             //check that the correct number of records are found
             if (FilteredSuppliers.Count == 2)
             {
