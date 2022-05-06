@@ -26,6 +26,11 @@ namespace ClassLibrary
             }
         }
 
+        public void Find(object staffId)
+        {
+            throw new NotImplementedException();
+        }
+
 
         //staffid private member variable
         private string mStaffFirstName;
