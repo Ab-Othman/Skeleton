@@ -8,9 +8,30 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 StaffId;
     protected void Page_Load(object sender, EventArgs e)
     {
+        StaffId = Convert.ToInt32(Session["StaffId"]);
+        if (IsPostBack == false)
+        {
+            if (StaffId != -1)
+            {
+                DisplayStaff();
+            }
+        }
+    }
 
+    void DisplayStaff()
+    {
+        clsStaffCollection Staff = new clsStaffCollection();
+        Staff.ThisStaff.Find(StaffId);
+        txtStaffId.Text = Staff.ThisStaff.StaffId.ToString();
+        txtStaffFirstName.Text = Staff.ThisStaff.StaffFirstName;
+        txtStaffLastName.Text = Staff.ThisStaff.StaffLastName;
+        txtStaffEmail.Text = Staff.ThisStaff.StaffEmail;
+        txtStaffPhoneNumber.Text = Staff.ThisStaff.StaffPhoneNumber.ToString();
+        txtStaffWeeklyContractedHours.Text = Staff.ThisStaff.StaffWeeklyContractedHours.ToString();
+        txtStaffStartDate.Text = Staff.ThisStaff.StaffStartDate.ToString();
     }
 
     protected void btnOk_Click(object sender, EventArgs e)
@@ -19,7 +40,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsStaff AnStaff = new clsStaff();
 
         //capture the StaffFirstName
-        string StaffId = txtStaffId.Text;
+        Int32 StaffId = Convert.ToInt32(txtStaffId.Text);
         string StaffFirstName = txtStaffFirstName.Text;
         string StaffLastName = txtStaffLastName.Text;
         string StaffEmail = txtStaffEmail.Text;
@@ -30,19 +51,32 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnStaff.Valid(StaffFirstName, StaffLastName, StaffEmail, StaffPhoneNumber, StaffWeeklyContractedHours, StaffStartDate);
         if (Error == "")
         {
+            AnStaff.StaffId = StaffId;
             AnStaff.StaffId = Convert.ToInt32(StaffId);
             AnStaff.StaffFirstName = StaffFirstName;
             AnStaff.StaffLastName = StaffLastName;
             AnStaff.StaffPhoneNumber = Convert.ToInt32(StaffPhoneNumber);
+            AnStaff.StaffEmail = StaffEmail;
             AnStaff.StaffWeeklyContractedHours = Convert.ToInt32(StaffWeeklyContractedHours);
             AnStaff.StaffStartDate = Convert.ToDateTime(StaffStartDate);
-            //store the StaffFirstName in the session object
-            Session["AnStaff"] = AnStaff;
-            //navigate to the viewer page
-            Response.Redirect("StaffViewer.aspx");
+            AnStaff.Management = chkManagement.Checked;
+
+            clsStaffCollection StaffList = new clsStaffCollection();
+            if (StaffId == -1)
+            {
+                StaffList.ThisStaff = AnStaff;
+                StaffList.Add();
+            }
+            else
+            {
+                StaffList.ThisStaff.Find(StaffId);
+                StaffList.ThisStaff = AnStaff;
+                StaffList.Update();
+            }
+            Response.Redirect("StaffList.aspx");
         }
         else
-        {
+        { 
             lblError.Text = Error;
         }
     }
