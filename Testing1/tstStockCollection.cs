@@ -179,7 +179,7 @@ namespace Testing1
             Boolean Found = AllStocks.ThisStock.Find(PrimaryKey);
             Assert.IsFalse(Found);
         }
-        
+
         [TestMethod]
         public void ReportByPhoneColourMethodOK()
         {
@@ -189,7 +189,7 @@ namespace Testing1
             Assert.AreEqual(AllStocks.Count, FilteredStocks.Count);
 
         }
-       
+
         [TestMethod]
         public void ReportByPhoneColourNoneFound()
         {
