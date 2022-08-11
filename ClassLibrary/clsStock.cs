@@ -33,6 +33,9 @@ namespace ClassLibrary
                 mPhoneDescription = value;
             }
         }
+
+       
+
         private string mPhoneColour;
         public string PhoneColour
         {
@@ -120,13 +123,12 @@ namespace ClassLibrary
 
         }
 
-        public string Valid(string phoneDescription, string phoneColour, string dateReleased, string price)
+        public string Valid(string phoneDescription, string phoneColour, string dateReleased)
         {
             //create a string variable to store the error
             String Error = "";
             //create a temporary variable to store date values
             DateTime DateTemp;
-            //if the PhoneDescription is blank
             if (phoneDescription.Length == 0)
             {
                 //record the error
@@ -176,9 +178,5 @@ namespace ClassLibrary
         }
 
         
-
-
-
-
     }
 }

@@ -12,8 +12,6 @@ namespace Testing1
         string PhoneDescription = "Iphone 14";
         string PhoneColour = "Black";
         string DateReleased = DateTime.Now.Date.ToString();
-        string Price = "179.99";
-
         [TestMethod]
         public void TestMethod1()
         {
@@ -270,7 +268,7 @@ namespace Testing1
             //string  variable to store any error message
             String Error = "";
             //invoke the method
-            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased, Price);
+            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -284,7 +282,7 @@ namespace Testing1
             //create some test data to pass to the method
             string PhoneDescription = ""; //this should trigger an error
             //invoke the method
-            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased, Price);
+            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased);
             //test to see that the result is correct 
             Assert.AreNotEqual(Error, "");
         }
@@ -299,7 +297,7 @@ namespace Testing1
             //create some test data to pass to the method
             string PhoneDescription = "a"; //this should be ok
             //invoke the method
-            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased, Price);
+            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -315,7 +313,7 @@ namespace Testing1
             //create some test data to pass to the method
             string PhoneDescription = "aa"; //this should be ok
             //invoke the method
-            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased, Price);
+            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -329,7 +327,7 @@ namespace Testing1
             //create some test data to pass to the method
             string PhoneDescription = "aaaaaaaaaaaaaaaaaaa"; //this should be ok
             //invoke the method
-            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased, Price);
+            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -343,7 +341,7 @@ namespace Testing1
             //create some test data to pass to the method
             string PhoneDescription = "aaaaaaaaaaaaaaaaaaaa"; //this should be ok
             //invoke the method
-            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased, Price);
+            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -357,7 +355,7 @@ namespace Testing1
             //create some test data to pass to the method
             string PhoneDescription = "aaaaaaaaaa";//this should be ok
             //invoke the method
-            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased, Price);
+            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
 
@@ -372,7 +370,7 @@ namespace Testing1
             //create some test data to pass to the method
             string PhoneDescription = "aaaaaaaaaaaaaaaaaaaaa"; //this should fail
             //invoke the method
-            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased, Price);
+            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased);
             //test to see that the result is correct 
             Assert.AreNotEqual(Error, "");
         }
@@ -387,7 +385,7 @@ namespace Testing1
             string PhoneDescription = "";
             PhoneDescription = PhoneDescription.PadRight(500, 'a');// this should fail
             //invoke the method
-            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased, Price);
+            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -407,7 +405,7 @@ namespace Testing1
             //convert the date variable to a string variable
             string DateReleased = TestDate.ToString();
             //invoke the method
-            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased, Price);
+            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -427,7 +425,7 @@ namespace Testing1
             //convert the date variable to a string variable
             string DateReleased = TestDate.ToString();
             //invoke the method
-            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased, Price);
+            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased);
             //test to see that the result is correct 
             Assert.AreNotEqual(Error, "");
         }
@@ -445,7 +443,7 @@ namespace Testing1
             //convert the date variable to a string variable
             string DateReleased = TestDate.ToString();
             //invoke the method
-            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased, Price);
+            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -465,7 +463,7 @@ namespace Testing1
             //convert the date variable to a string varaible
             string DateReleased = TestDate.ToString();
             //invoke the method
-            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased, Price);
+            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -485,7 +483,7 @@ namespace Testing1
             //convert the date variable to a string variable
             string DateReleased = TestDate.ToString();
             //invoke the method
-            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased, Price);
+            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -499,7 +497,7 @@ namespace Testing1
             //set the DateReleased to a non date value
             string DateReleased = "this is not a date!";
             //invoke the method
-            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased, Price);
+            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
 
@@ -514,7 +512,7 @@ namespace Testing1
             //create some test data to pass to the method
             string PhoneColour = ""; //this should trigger an error
             //invoke the method
-            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased, Price);
+            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased);
             //test to see that the result is correct 
             Assert.AreNotEqual(Error, "");
         }
@@ -529,7 +527,7 @@ namespace Testing1
             //create some test data to pass to the method
             string PhoneColour = "a"; //this should be ok
             //invoke the method
-            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased, Price);
+            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -545,7 +543,7 @@ namespace Testing1
             //create some test data to pass to the method
             string PhoneColour = "aa"; //this should be ok
             //invoke the method
-            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased, Price);
+            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -559,7 +557,7 @@ namespace Testing1
             //create some test data to pass to the method
             string PhoneColour = "aaaaaaaaaaaaaaaaaaa"; //this should be ok
             //invoke the method
-            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased, Price);
+            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -573,7 +571,7 @@ namespace Testing1
             //create some test data to pass to the method
             string PhoneColour = "aaaaaaaaaaaaaaaaaaaa"; //this should be ok
             //invoke the method
-            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased, Price);
+            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -587,7 +585,7 @@ namespace Testing1
             //create some test data to pass to the method
             string PhoneColour = "aaaaaaaaaa";//this should be ok
             //invoke the method
-            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased, Price);
+            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
 
@@ -602,7 +600,7 @@ namespace Testing1
             //create some test data to pass to the method
             string PhoneColour = "aaaaaaaaaaaaaaaaaaaaa"; //this should fail
             //invoke the method
-            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased, Price);
+            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased);
             //test to see that the result is correct 
             Assert.AreNotEqual(Error, "");
         }
@@ -617,7 +615,7 @@ namespace Testing1
             string PhoneColour = "";
             PhoneColour = PhoneColour.PadRight(500, 'a');// this should fail
             //invoke the method
-            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased, Price);
+            Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }

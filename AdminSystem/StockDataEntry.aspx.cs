@@ -19,27 +19,44 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of clsStock
         clsStock AnStock = new clsStock();
-        string PhoneNo = txtPhoneNo.Text;
+        int PhoneNo = int.Parse(txtPhoneNo.Text);
         string PhoneDescription = txtPhoneDescription.Text;
         string PhoneColour = txtPhoneColour.Text;
         string DateReleased = txtDateReleased.Text;
-        string Price = txtPrice.Text;
+       
         string Error = "";
         //validate the error
-        Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased, Price);
+        Error = AnStock.Valid(PhoneDescription, PhoneColour, DateReleased);
         if (Error == "")
         {
+            AnStock.PhoneNo = PhoneNo;
             //capture the PhoneDescription
             AnStock.PhoneDescription = PhoneDescription;
             //capture the phonecolour
             AnStock.PhoneColour = PhoneColour;
             //capture the datereleased
             AnStock.DateReleased = Convert.ToDateTime(DateReleased);
-            //store the address in the session object
-            Session["AnStock"] = AnStock;
-            //navigate to the viewer page 
-            Response.Redirect("StockViewer.aspx");
+            //capture the availability
+            AnStock.Availability = chkActive.Checked;
+            
+            clsStockCollection StockList = new clsStockCollection();
+           
+            if(PhoneNo == -1)
+            {
+                StockList.ThisStock = AnStock;
+                StockList.Add();
+
+            }
+            else
+            {
+                StockList.ThisStock.Find(PhoneNo);
+                StockList.ThisStock = AnStock;
+                StockList.Update();
+
+            }
+            Response.Redirect("StockList.aspx");
         }
+
         else
         {
             //display the error message
@@ -75,5 +92,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtPrice.Text = AnStock.Price.ToString();
              
         }
+    }
+
+    protected void txtPhoneNo_TextChanged(object sender, EventArgs e)
+    {
+
     }
 }

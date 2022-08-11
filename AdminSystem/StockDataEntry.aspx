@@ -9,7 +9,7 @@
 <body style="margin-top: 33px">
     <form id="form1" runat="server">
         <asp:Label ID="lblPhoneNo" runat="server" Text="Phone ID Number" width="303px"></asp:Label>
-        <asp:TextBox ID="txtPhoneNo" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtPhoneNo" runat="server" OnTextChanged="txtPhoneNo_TextChanged"></asp:TextBox>
         <p>
             <asp:Label ID="lblPhoneDescription" runat="server" Text="Phone Description" width="303px"></asp:Label>
             <asp:TextBox ID="txtPhoneDescription" runat="server"></asp:TextBox>
